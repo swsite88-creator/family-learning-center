@@ -1,0 +1,33 @@
+# 项目可行性报告
+
+核查日期：2026-11-21。Stars、Forks 和活跃度来自公开 GitHub 页面/搜索索引，可能变化。候选源码尚未在本机下载构建，因此上游功能说明不能视为本地实测结果。
+
+| 项目 | 核查结果 | Stars / Forks | 许可证 | 内容、运行与设备 | 建议 |
+|---|---|---:|---|---|---|
+| [聪聪学堂](https://github.com/wuwangzhang1216/congcong-school) | 仓库存在，页面约 170 次提交；近期版本 v1.8.3，有在线演示 | 约 1.4k / 381 | MIT | README 说明 Web、Android、iOS；数据、音频、图片经 Release 分发；覆盖四科一至六年级、逐句朗读/跟读和本地进度。Web 适用手机电脑；尚待真机验收 | 推荐主平台，先用官方演示。若自建需下载素材并按上游文档构建，勿镜像大资源 |
+| [ChinaStudyFree / ChinaTextbookStudy](https://github.com/XRider/ChinaTextbookStudy) | 给定仓库存在，README 指向应用仓库 `wuwangzhang1216/ChinaTextbookStudyFree`，文档含 Web/iOS 说明 | 未能确认 | README 声称 MIT | Web 需 Node/npm；多媒体/数据 Release 约 1.4GB；内容与聪聪学堂高度重合 | 跳过重复安装；若评估应先澄清仓库名与克隆地址并检查依赖 |
+| [L-MATH](https://github.com/LLL-96/Math-Learnning) | 仓库及 Pages 演示存在 | 0 / 0 | MIT | 原生 HTML/CSS/JS。README 自述一至六年级、91 单元、239+题、PWA、本地进度/错题本；有未完善内容，手机响应式 | 推荐作为数学补充外链，不复制代码 |
+| [KidsLab](https://github.com/talkincode/kidslab) | 仓库及 Pages 演示存在，页面显示 128 次提交 | 6 / 3 | 代码 MIT；课件 CC BY 4.0 | K-12 交互课件，有小学数学探索和编程内容；不是完整教材/题库/全科平台，现代浏览器静态网页 | 可选探索补充；转载课件须署名 |
+| [国家中小学电子课本资源](https://github.com/zhongyuanqi/dianzi-keben) | 仓库存在，账号页显示公开；教材 PDF 归档 | 约 46 / 11（索引值） | 未发现明确许可证 | 含 PDF 教材，不是交互平台；文件较大。公开下载不等于获准再分发 | 不安装、不镜像；教材优先走国家智慧教育平台官方渠道 |
+
+## 安全、隐私与服务依赖
+
+- 聪聪学堂 Web 通过上游发布的静态内容/CDN 获取资料；离线缓存和录音能力需实际设备核验。其可选的题库/故事/TTS 生成流程依赖外部 AI/TTS API Key，普通家庭使用预生成内容无需配置 Key。新入口不调用这些 API。
+- ChinaStudyFree 依赖 Node 构建及外部 Release 大资源。L-MATH README 提及 Google Fonts；新入口也加载 Google Fonts 并有系统字体回退，可断网降级。如希望完全避免第三方字体请求，可改成本机系统字体。
+- 新入口无登录、无上传；进度仅保存在浏览器 `localStorage`，设备间不共享，清除站点数据可能删除记录；可导出 JSON。外链服务有各自的隐私策略。
+- 未发现可据公开页面确认的安全漏洞，但这不是安全审计。部署前应检查上游依赖、资源来源和浏览器告警。
+- 电子教材、音频和课件的可下载性不能证明再分发授权；不将候选教材文件复制到新仓库。
+
+## 推荐安装清单
+
+1. 主入口：聪聪学堂官方在线演示。
+2. 数学扩展：L-MATH 官方 GitHub Pages；KidsLab 用于互动探索。
+3. 不部署重复的 ChinaStudyFree，不镜像未确认授权的教材 PDF。
+4. 家庭入口采用纯静态 GitHub Pages，记录留在本地。跨设备同步另行评估授权清晰、用户可控且不采集儿童敏感信息的方案。
+
+## 阶段状态
+
+- 阶段1：公开资料核查已完成；仓库实际构建和运行验证尚未完成。
+- 阶段2：未下载候选源码或进行设备实测，报告明确区分上游说明与本地验证。
+- 阶段3：家庭入口原型已建立，主学科外链到聪聪学堂，工具外链到 L-MATH/KidsLab；未复制其核心代码。
+- 阶段4：当前工作区起初不是 Git 仓库，且无 GitHub remote，因此未创建仓库、推送或发布。部署使用本人 GitHub 官方授权流程，不提供密码、Token 或私钥。
