@@ -12,4 +12,4 @@
 
 源码仓库：[swsite88-creator/family-learning-center](https://github.com/swsite88-creator/family-learning-center)。
 
-PWA 安装需 HTTPS 或 localhost；跨设备同步暂不提供。英语跟读录音在当前页面内暂存、不会上传；自动发音评分需要语音识别服务，当前提供回放后的自评，避免把儿童声音传给未经授权的服务。完整核查见 [项目可行性报告](REPORT.md)。
+PWA 安装需 HTTPS 或 localhost；跨设备同步暂不提供。英语跟读录音在当前页面内暂存、不会上传；支持设备端识别的浏览器可提供词句匹配参考分，其他设备可回放自评。完整核查见 [项目可行性报告](REPORT.md)。
