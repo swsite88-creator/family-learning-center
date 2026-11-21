@@ -1,6 +1,6 @@
 # 家庭学习中心
 
-面向小学四至六年级的独立静态学习入口。无构建依赖、无需账号或后端，学习记录仅存于当前设备浏览器，可导出 JSON 备份。
+面向小学四至六年级的独立静态学习入口。内置英语主题词汇（每年级 36 个）、词汇小测、句型练习、听力、分级阅读和录音跟读自评。无构建依赖、无需账号或后端，学习记录仅存于当前设备浏览器，可导出 JSON 备份。
 
 ## 本地预览
 
@@ -8,8 +8,8 @@
 
 ## GitHub Pages 部署
 
-在自己的 GitHub 账号创建独立仓库 `family-learning-center`，将本目录文件推送到仓库根目录，在 Settings → Pages 选择从 `main` 分支根目录部署。通过 GitHub 网页登录、Git Credential Manager 或 SSH 密钥授权；不要把密码、令牌或私钥写入文件。
+网站已部署到 `https://swsite88-creator.github.io/family-learning-center/`。仓库使用 GitHub Actions 发布 Pages；后续推送到 `main` 会自动更新。通过 GitHub 网页登录、Git Credential Manager 或 SSH 密钥授权；不要把密码、令牌或私钥写入文件。
 
-当前工作区尚未关联 Git 仓库或 GitHub remote，文件已准备好，但未创建远程仓库、推送或发布。
+源码仓库：[swsite88-creator/family-learning-center](https://github.com/swsite88-creator/family-learning-center)。
 
-PWA 安装需 HTTPS 或 localhost；跨设备同步暂不提供。完整核查见 [项目可行性报告](REPORT.md)。
+PWA 安装需 HTTPS 或 localhost；跨设备同步暂不提供。英语跟读录音在当前页面内暂存、不会上传；自动发音评分需要语音识别服务，当前提供回放后的自评，避免把儿童声音传给未经授权的服务。完整核查见 [项目可行性报告](REPORT.md)。
