@@ -15,8 +15,8 @@
 |---|---|
 | 线上地址 | https://www.020c.cc.cd |
 | 英语书架页 | https://www.020c.cc.cd/magic-series.html |
-| 仓库 | https://github.com/swsite88-creator/family-learning-center |
-| 本机路径 | `D:\CODEX工作区\family-learning-center` |
+| 仓库 | https://github.com/swsite88-creator/family-learning-center （公开，可直接 clone） |
+| 原始开发机路径 | `D:\CODEX工作区\family-learning-center`（换机器时以实际路径为准，见 §10） |
 | 部署方式 | GitHub Pages，由 `.github/workflows/pages.yml` 在推送 `main` 后自动发布 |
 | 自定义域名 | `www.020c.cc.cd`（仓库内 `CNAME` 文件） |
 
@@ -99,19 +99,19 @@
 ## 7. 本地验证方法
 
 ```bash
-cd D:/CODEX工作区/family-learning-center
+cd <仓库实际路径>              # 原始开发机为 D:/CODEX工作区/family-learning-center
 python -m http.server 8123      # 然后访问 http://localhost:8123
 node --check app.js english.js sw.js
 ```
 
-**移动端不要靠直接截图判断"溢出"**，这台机器有 133% 系统缩放，`--window-size` 高度较大时 Edge headless 会横向截断渲染，看起来像溢出、实际没问题。正确做法：
+**移动端不要靠直接截图判断"溢出"**，原始开发机有 133% 系统缩放，`--window-size` 高度较大时 Edge headless 会横向截断渲染，看起来像溢出、实际没问题。有这个缩放比的机器都要按下面的方法验证：
 
 1. 写一个临时页，用 `<iframe width="390">` 载入目标页
 2. 在 iframe 里读 `document.documentElement.scrollWidth`，与 390 比较
 3. 遍历 `body *` 的 `getBoundingClientRect().right`，找出真正越界的元素
 4. 需要文本数据时用 `--dump-dom` 提取，不依赖截图识别
 
-截图命令模板：
+截图命令模板（浏览器路径按本机实际情况替换；macOS 一般是 `/Applications/Google Chrome.app/Contents/MacOS/Google Chrome`）：
 
 ```bash
 "/c/Program Files (x86)/Microsoft/Edge/Application/msedge.exe" \
@@ -151,3 +151,29 @@ git push origin main
 - `english-adventure.html`（星芽探险社）有自己一整套内联样式、只引 `styles.css`，**没有套用卡通主题**，从首页点进去风格有落差。
 - `README.md` 部分小节描述的是已下架的旧版块，属于历史文档，改动前请对照现状。
 - `REPORT.md` 长期有用户自己的未提交改动，不要代为决定是否提交。
+
+---
+
+## 10. 换一台电脑 / 新环境上手
+
+**只拷 `AGENTS.md` 是不够的**：它只是说明书，不含任何代码。AI 读完会知道规矩，但没有文件可改、也没有东西可验证。需要的是**整个仓库**（约 184 KB，很小）。
+
+推荐直接克隆（仓库公开，读取不需要登录）：
+
+```bash
+git clone https://github.com/swsite88-creator/family-learning-center.git
+cd family-learning-center
+```
+
+然后让 AI 从这个目录开始工作，它会自动读到 `AGENTS.md`。
+
+**复制文件夹也是可以的**，但要注意：
+
+- 想保留提交历史和后续推送能力，**必须一并复制隐藏的 `.git` 目录**（Windows 资源管理器默认看不见，需要在"查看"里勾选"隐藏的项目"，或用 `robocopy /E`）
+- 只复制可见文件也能跑、能改、能本地预览，但那是个"没有历史的快照"，推送前需要重新关联远端
+
+**新机器上需要准备的**：Git、Python（起本地服务器）、Node（可选，用于 `node --check` 语法校验）、一个 Chromium 内核浏览器（用作无头验证）。
+
+**需要重新授权的事**：向仓库推送要在这台机器上登录 GitHub（Git Credential Manager 弹窗即可）。**不要把 GitHub 密码或 Token 写进任何文件**，包括本文件。
+
+**需要按实际改的地方**：`AGENTS.md` 里出现的 `D:\CODEX工作区\...` 与 Edge 浏览器路径都是原始开发机的，换机器后按本机路径替换，不必回写仓库。
