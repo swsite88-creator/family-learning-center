@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>霍格沃茨四年级魔法英语互动书 · 500页完整版</title>
+  <style>
+    :root {
+      --bg-dark: #16120e;
+      --parchment: #f7efe0;
+      --parchment-2: #efe2c6;
+      --ink: #241911;
+      --ink-muted: #5b4634;
+      --gold: #c9983b;
+      --gold-bright: #e8be63;
+      --crimson: #7f1d1d;
+      --emerald: #14532d;
+      --sapphire: #1e3a8a;
+      --amber-soft: #fef3c7;
+      --border: #cbb489;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top, #2a2017 0%, var(--bg-dark) 75%);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    .topbar {
+      background: rgba(20, 15, 11, 0.94);
+      color: var(--parchment);
+      border-bottom: 2px solid var(--gold);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--crimson), #450a0a);
+      color: var(--gold-bright);
+      border: 1px solid var(--gold);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff6e5;
+    }
+
+    .topbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .pill {
+      background: rgba(255, 248, 231, 0.1);
+      border: 1px solid rgba(232, 190, 99, 0.45);
+      color: #fff3d6;
+      padding: 5px 11px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    select, button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn {
+      background: linear-gradient(180deg, #f3d184, var(--gold));
+      color: #231609;
+      border: 1px solid #9b6f1e;
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform 0.12s ease, filter 0.15s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 248, 231, 0.12);
+      color: #fff6e5;
+      border: 1px solid rgba(232, 190, 99, 0.5);
+    }
+
+    .btn-small {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+    }
+
+    .layout {
+      max-width: 1280px;
+      margin: 22px auto;
+      padding: 0 16px 40px;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 920px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sidebar {
+      background: var(--parchment);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+    }
+
+    @media (max-width: 920px) {
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    .sidebar h2 {
+      font-size: 15px;
+      color: var(--crimson);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .year-select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fffdf8;
+      color: var(--ink);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .unit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .unit-item {
+      text-align: left;
+      background: #fffdf8;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .unit-item.active {
+      background: linear-gradient(135deg, var(--crimson), #581111);
+      color: #fff8e7;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .unit-item .pages-tag {
+      font-size: 11px;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .page-jump-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .page-dot-btn {
+      padding: 5px 0;
+      font-size: 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #fffdf8;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .page-dot-btn.active {
+      background: var(--gold);
+      color: #1f1307;
+      border-color: #8c6216;
+    }
+
+    .book-stage {
+      background: linear-gradient(180deg, var(--parchment), var(--parchment-2));
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .book-stage {
+        padding: 16px;
+      }
+    }
+
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .page-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--crimson);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .page-num-box {
+      background: #fffdf8;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 6px 12px;
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .page-num-box strong {
+      font-size: 16px;
+      color: var(--crimson);
+    }
+
+    .illustration-card {
+      background: #fffdf7;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 0 24px rgba(201, 152, 59, 0.14);
+    }
+
+    .illustration-card svg {
+      width: 100%;
+      max-height: 250px;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .scene-caption {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .story-box {
+      background: rgba(255, 253, 247, 0.85);
+      border-left: 4px solid var(--crimson);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .story-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .story-en {
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: #1c120b;
+      margin-bottom: 10px;
+    }
+
+    .story-en .vocab-word {
+      background: #fde68a;
+      border-bottom: 2px solid #b45309;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .story-cn {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      background: #f6ebd4;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .story-cn.show {
+      display: block;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .flip-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .flip-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .vocab-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .vocab-term {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--crimson);
+    }
+
+    .vocab-phonetic {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+    }
+
+    .vocab-clue {
+      font-size: 12px;
+      color: #92400e;
+      background: var(--amber-soft);
+      padding: 3px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin: 6px 0;
+    }
+
+    .vocab-example {
+      font-size: 13.5px;
+      color: var(--ink);
+      margin-top: 4px;
+    }
+
+    .vocab-meaning {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+      font-size: 13px;
+      color: var(--emerald);
+      font-weight: 700;
+      display: none;
+    }
+
+    .flip-card.revealed .vocab-meaning {
+      display: block;
+    }
+
+    .quiz-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-q {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-btn {
+      text-align: left;
+      padding: 9px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #faf3e3;
+      color: var(--ink);
+      font-size: 13.5px;
+      transition: background 0.12s ease;
+    }
+
+    .opt-btn:hover {
+      background: #f3e3bf;
+    }
+
+    .opt-btn.correct {
+      background: #dcfce7;
+      border-color: #15803d;
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    .opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #b91c1c;
+      color: #7f1d1d;
+    }
+
+    .feedback-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .feedback-box.ok {
+      background: #dcfce7;
+      color: #14532d;
+      border: 1px solid #86efac;
+    }
+
+    .feedback-box.no {
+      background: #fef2f2;
+      color: #7f1d1d;
+      border: 1px solid #fca5a5;
+    }
+
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #f7eed9;
+      border: 1px dashed var(--border);
+      margin-bottom: 10px;
+    }
+
+    .word-chip {
+      background: #fffdf8;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      padding: 5px 11px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .book-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-top: 2px solid var(--border);
+      padding-top: 14px;
+      margin-top: 18px;
+    }
+
+    .note-box {
+      font-size: 12px;
+      color: var(--ink-muted);
+      background: rgba(255, 253, 247, 0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">HOGWARTS Y4 · 500P</span>
+      <h1>霍格沃茨四年级魔法英语互动书</h1>
+    </div>
+    <div class="topbar-controls">
+      <span class="pill" id="pointsDisplay">🏆 学院积分：0 分</span>
+      <span class="pill" id="progressDisplay">📖 已读页数：1 / 500 页</span>
+      <select id="voiceRate" class="pill" style="color:#fff3d6; background:rgba(255,248,231,0.14);">
+        <option value="0.9" style="color:#1a120b;">🔊 正常语速 (0.9x)</option>
+        <option value="0.72" style="color:#1a120b;">🐢 慢速跟读 (0.72x)</option>
+      </select>
+      <button class="btn btn-ghost btn-small" id="resetProgressBtn">重置进度</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>
+        <span>魔法书架目录</span>
+        <span style="font-size:11px; color:var(--ink-muted);">共 500 页</span>
+      </h2>
+      <label for="yearSelect" style="font-size:12px; color:var(--ink-muted); display:block; margin-bottom:4px;">选择学年篇章：</label>
+      <select id="yearSelect" class="year-select"></select>
+
+      <div class="unit-list" id="unitList"></div>
+
+      <div style="font-size:12px; color:var(--ink-muted); font-weight:700;">本单元页码跳转（每单元 6 页）：</div>
+      <div class="page-jump-grid" id="pageJumpGrid"></div>
+    </aside>
+
+    <main class="book-stage" id="bookStage"></main>
+  </div>
+
+  <script>
+    const YEARS = [
+      { id: 1, name: "Year 1 · 对角巷与魔杖启蒙 (P.1–P.72)", startPage: 1 },
+      { id: 2, name: "Year 2 · 九又四分之三站台与分院 (P.73–P.144)", startPage: 73 },
+      { id: 3, name: "Year 3 · 霍格沃茨魔法课堂 (P.145–P.216)", startPage: 145 },
+      { id: 4, name: "Year 4 · 活点地图与城堡密道 (P.217–P.288)", startPage: 217 },
+      { id: 5, name: "Year 5 · 魁地奇赛场与飞天扫帚 (P.289–P.360)", startPage: 289 },
+      { id: 6, name: "Year 6 · 神奇动物保护与图鉴 (P.361–P.432)", startPage: 361 },
+      { id: 7, name: "Year 7 · 三强争霸谜题与魔法词典 (P.433–P.500)", startPage: 433 }
+    ];
+
+    const TEMPLATES = [
+      {
+        scene: "Ollivanders Wand Shop · 奥利凡德魔杖店",
+        theme: "wand",
+        titlePrefix: "The Wand That Chooses",
+        story: [
+          "The wand shop was narrow and shabby, with tall shelves reaching the ceiling.",
+          "Mr. Ollivander looked closely at Leo and whispered, \"Every wand is unique. It is the wand that chooses the wizard.\"",
+          "When Leo waved a holly wand, bright red sparks danced in the air. Inside it was a flexible phoenix feather."
+        ],
+        cn: "魔杖店又窄又旧，高大的书架直达天花板。奥利凡德先生仔细看着里奥，轻声说：“每根魔杖都是独一无二的，是魔杖选择巫师。”里奥挥动冬青木魔杖时，耀眼的红色火花在空中飞舞，里面有一根柔韧的凤凰尾羽。",
+        vocab: [
+          { word: "narrow", phonetic: "/ˈnærəʊ/", clue: "反义词：wide 宽阔的", example: "Diagon Alley has many narrow shops.", meaning: "狭窄的" },
+          { word: "unique", phonetic: "/juˈniːk/", clue: "前缀 uni- = 单一的", example: "Every wizard has a unique wand.", meaning: "独一无二的" },
+          { word: "flexible", phonetic: "/ˈfleksəbl/", clue: "词根 flex = 弯曲", example: "A flexible broom handle bends easily.", meaning: "柔韧的，灵活的" },
+          { word: "whisper", phonetic: "/ˈwɪspə(r)/", clue: "轻声说话，不吵醒别人", example: "Harry whispered a secret to Ron.", meaning: "低声说，耳语" }
+        ],
+        question: "Why does Mr. Ollivander say \"Every wand is unique\"?",
+        options: [
+          "Because every wand has its own special core and feel.",
+          "Because all wands are made of plastic.",
+          "Because wands cannot make sparks."
+        ],
+        answer: 0,
+        explain: "魔杖拥有不同的杖芯（如凤凰尾羽）和特质，所以每根魔杖都是独一无二的。",
+        sentence: ["wand", "chooses", "The", "wizard.", "the"]
+      },
+      {
+        scene: "Platform 9¾ · 九又四分之三站台",
+        theme: "train",
+        titlePrefix: "Scarlet Steam Express",
+        story: [
+          "Leo pushed his heavy trunk toward the brick barrier between platforms nine and ten.",
+          "\"Don't hesitate! Walk straight through,\" Mia encouraged him with a brave smile.",
+          "Suddenly, the red Hogwarts Express appeared with white steam puffing into the morning air."
+        ],
+        cn: "里奥推着沉重的行李箱走向九号和十号站台之间的砖墙。“别犹豫！径直走过去，”米娅用勇敢的微笑鼓励他。突然，红色的霍格沃茨特快列车出现了，白色的蒸汽喷向清晨的空气。",
+        vocab: [
+          { word: "hesitate", phonetic: "/ˈhezɪteɪt/", clue: "犹豫，拿不定主意", example: "Do not hesitate when you know the answer.", meaning: "犹豫" },
+          { word: "encourage", phonetic: "/ɪnˈkʌrɪdʒ/", clue: "给别人信心和力量", example: "Good friends encourage each other.", meaning: "鼓励" },
+          { word: "steam", phonetic: "/stiːm/", clue: "热水或火车冒出的白气", example: "Hot steam rose from the kettle.", meaning: "蒸汽" },
+          { word: "barrier", phonetic: "/ˈbæriə(r)/", clue: "阻挡通行的障碍或墙", example: "The brick barrier hid the secret platform.", meaning: "障碍，屏障" }
+        ],
+        question: "What does \"hesitate\" mean when Leo stands before the wall?",
+        options: [
+          "To pause because of fear or doubt",
+          "To run away very fast",
+          "To fall asleep on the floor"
+        ],
+        answer: 0,
+        explain: "站在砖墙前时，人通常会因为担心撞上去而“犹豫”（pause or doubt）。",
+        sentence: ["straight", "Walk", "the", "through", "barrier."]
+      },
+      {
+        scene: "Potions Dungeon · 地下室魔药课",
+        theme: "potion",
+        titlePrefix: "Bubbling Cauldron Recipe",
+        story: [
+          "In the cool stone dungeon, silver mist curled above the bubbling pewter cauldron.",
+          "\"Stir clockwise twice before adding moonstone powder,\" the potion note warned.",
+          "If you stir too fast, the golden liquid turns into harmless purple bubbles."
+        ],
+        cn: "在凉爽的石砌地下室里，银白色的雾气在冒泡的锡制大锅上方盘旋。“加入月光石粉前，顺时针搅拌两次，”魔药笔记提醒道。如果搅拌太快，金色的液体就会变成无害的紫色泡泡。",
+        vocab: [
+          { word: "cauldron", phonetic: "/ˈkɔːldrən/", clue: "巫师熬魔药的大锅", example: "Stir the soup inside the big cauldron.", meaning: "大锅" },
+          { word: "harmless", phonetic: "/ˈhɑːmləs/", clue: "harm 伤害 + -less 无…的", example: "The glowing sparks are harmless.", meaning: "无害的" },
+          { word: "clockwise", phonetic: "/ˈklɒkwaɪz/", clue: "顺着时钟指针转的方向", example: "Turn the key clockwise to open it.", meaning: "顺时针的" },
+          { word: "ingredient", phonetic: "/ɪnˈɡriːdiənt/", clue: "做菜或配药的材料", example: "Dragon scale is a rare ingredient.", meaning: "成分，原料" }
+        ],
+        question: "What happens if a student stirs the potion too fast?",
+        options: [
+          "It turns into harmless purple bubbles.",
+          "It flies out of the window.",
+          "It freezes into solid ice."
+        ],
+        answer: 0,
+        explain: "根据短文第三句，搅拌太快会使金色液体变成“无害的紫色泡泡”。",
+        sentence: ["Stir", "the", "slowly", "potion", "today."]
+      },
+      {
+        scene: "Quidditch Pitch · 魁地奇球场",
+        theme: "broom",
+        titlePrefix: "Chasing the Golden Snitch",
+        story: [
+          "High above the green stadium, players soared across the windy sky on swift broomsticks.",
+          "The tiny Golden Snitch darted like a sunbeam between the tall goal hoops.",
+          "Mia leaned forward, spotted the tiny wings glinting in the sun, and dived smoothly."
+        ],
+        cn: "在绿茵球场上空，球员们骑着迅捷的飞天扫帚在多风的天空中翱翔。小小的金色飞贼像一缕阳光般在高高的球门环之间飞窜。米娅向前倾身，发现小小的翅膀在阳光下闪烁，便平稳地俯冲下去。",
+        vocab: [
+          { word: "soar", phonetic: "/sɔː(r)/", clue: "像鸟或扫帚一样高飞", example: "Eagles soar high above the mountains.", meaning: "高飞，翱翔" },
+          { word: "swift", phonetic: "/swɪft/", clue: "动作或速度很快的", example: "A swift runner won the race.", meaning: "迅速的，敏捷的" },
+          { word: "glint", phonetic: "/ɡlɪnt/", clue: "金属或阳光闪一下微光", example: "Gold coins glinted in the chest.", meaning: "闪烁，闪微光" },
+          { word: "dive", phonetic: "/daɪv/", clue: "向下方俯冲或跳水", example: "The diver made a clean splash.", meaning: "俯冲，跳水" }
+        ],
+        question: "How does Mia find the Golden Snitch?",
+        options: [
+          "She sees its tiny wings glinting in the sunlight.",
+          "She hears it ringing like a bell.",
+          "She finds it sitting on the grass."
+        ],
+        answer: 0,
+        explain: "短文提到她看到微小的翅膀在阳光下“glinting（闪烁）”后俯冲追赶。",
+        sentence: ["soared", "Mia", "above", "the", "stadium."]
+      },
+      {
+        scene: "Magical Creatures Meadow · 神奇动物草地",
+        theme: "creature",
+        titlePrefix: "The Shiny-Loving Niffler",
+        story: [
+          "Near the edge of the Forbidden Forest, a fluffy black Niffler snuffled through soft moss.",
+          "It loved anything shiny—silver coins, bright buttons, or polished spoons.",
+          "Although it was mischievous, gentle care helped return every lost treasure."
+        ],
+        cn: "在禁林边缘，一只毛茸茸的黑色嗅嗅正用鼻子在柔软的苔藓里拱来拱去。它喜欢任何发亮的东西——银币、亮晶晶的扣子或擦亮的勺子。虽然它很调皮，但温柔的照料让每件丢失的宝贝都物归原主。",
+        vocab: [
+          { word: "fluffy", phonetic: "/ˈflʌfi/", clue: "像绒毛或棉花糖一样蓬松", example: "The kitten has a fluffy tail.", meaning: "毛茸茸的，蓬松的" },
+          { word: "mischievous", phonetic: "/ˈmɪstʃɪvəs/", clue: "爱捣蛋但通常没有恶意的", example: "The mischievous puppy hid my sock.", meaning: "调皮的，爱捣蛋的" },
+          { word: "polished", phonetic: "/ˈpɒlɪʃt/", clue: "擦得发亮、光滑的", example: "The knight wore polished armor.", meaning: "擦亮的，光亮的" },
+          { word: "treasure", phonetic: "/ˈtreʒə(r)/", clue: "珍贵或心爱的东西", example: "Old books are a real treasure.", meaning: "财宝，珍宝" }
+        ],
+        question: "What kind of items attract the Niffler most?",
+        options: [
+          "Shiny objects like coins and bright buttons",
+          "Dry leaves and heavy rocks",
+          "Sour lemons and cold water"
+        ],
+        answer: 0,
+        explain: "第二段明确说明嗅嗅喜欢发亮的东西，如银币、亮扣子和擦亮的勺子。",
+        sentence: ["loves", "Niffler", "The", "shiny", "things."]
+      }
+    ];
+
+    function buildUnits() {
+      const units = [];
+      let currentPage = 1;
+      for (let y = 1; y <= 7; y++) {
+        const unitsInYear = y === 7 ? 8 : 12;
+        for (let u = 1; u <= unitsInYear; u++) {
+          const tpl = TEMPLATES[(units.length) % TEMPLATES.length];
+          const unitPages = (currentPage + 5 <= 500) ? 6 : (501 - currentPage);
+          const startP = currentPage;
+          const endP = currentPage + unitPages - 1;
+          units.push({
+            id: `y${y}u${u}`,
+            year: y,
+            unitNum: units.length + 1,
+            title: `Unit ${units.length + 1}: ${tpl.titlePrefix} #${u}`,
+            scene: tpl.scene,
+            theme: tpl.theme,
+            startPage: startP,
+            endPage: endP,
+            pageCount: unitPages,
+            story: tpl.story,
+            cn: tpl.cn,
+            vocab: tpl.vocab,
+            question: tpl.question,
+            options: tpl.options,
+            answer: tpl.answer,
+            explain: tpl.explain,
+            sentence: tpl.sentence
+          });
+          currentPage = endP + 1;
+        }
+      }
+      return units;
+    }
+
+    const UNITS = buildUnits();
+
+    const state = {
+      unitIndex: 0,
+      pageOffset: 0,
+      points: 0,
+      visitedPages: new Set([1]),
+      answeredKeys: new Set(),
+      builtWords: []
+    };
+
+    function loadState() {
+      try {
+        const saved = JSON.parse(localStorage.getItem("hogwarts_y4_book_v1") || "{}");
+        if (typeof saved.unitIndex === "number" && UNITS[saved.unitIndex]) {
+          state.unitIndex = saved.unitIndex;
+        }
+        if (typeof saved.pageOffset === "number") {
+          state.pageOffset = saved.pageOffset;
+        }
+        if (typeof saved.points === "number") {
+          state.points = saved.points;
+        }
+        if (Array.isArray(saved.visitedPages)) {
+          state.visitedPages = new Set(saved.visitedPages);
+        }
+        if (Array.isArray(saved.answeredKeys)) {
+          state.answeredKeys = new Set(saved.answeredKeys);
+        }
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    function saveState() {
+      try {
+        localStorage.setItem("hogwarts_y4_book_v1", JSON.stringify({
+          unitIndex: state.unitIndex,
+          pageOffset: state.pageOffset,
+          points: state.points,
+          visitedPages: Array.from(state.visitedPages),
+          answeredKeys: Array.from(state.answeredKeys)
+        }));
+      } catch (e) {
+        // ignore storage errors
+      }
+    }
+
+    function speakText(text) {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-US";
+      const rateEl = document.getElementById("voiceRate");
+      utter.rate = rateEl ? parseFloat(rateEl.value) : 0.9;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function addPointsOnce(key, pts) {
+      if (state.answeredKeys.has(key)) return false;
+      state.answeredKeys.add(key);
+      state.points += pts;
+      saveState();
+      updateTopbar();
+      return true;
+    }
+
+    function renderIllustrationSVG(theme, label) {
+      const palettes = {
+        wand: { sky1: "#2d1b3d", sky2: "#6b3fa0", accent: "#fbbf24" },
+        train: { sky1: "#7f1d1d", sky2: "#b91c1c", accent: "#fde68a" },
+        potion: { sky1: "#0f292e", sky2: "#164e63", accent: "#34d399" },
+        broom: { sky1: "#14532d", sky2: "#15803d", accent: "#facc15" },
+        creature: { sky1: "#3b2818", sky2: "#78350f", accent: "#fcd34d" }
+      };
+      const p = palettes[theme] || palettes.wand;
+      return `
+        <svg viewBox="0 0 800 240" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${label}">
+          <defs>
+            <linearGradient id="bgGrad-${theme}" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="${p.sky1}" />
+              <stop offset="100%" stop-color="${p.sky2}" />
+            </linearGradient>
+          </defs>
+          <rect width="800" height="240" fill="url(#bgGrad-${theme})" rx="10" />
+          <circle cx="670" cy="56" r="28" fill="${p.accent}" opacity="0.85" />
+          <circle cx="130" cy="44" r="3" fill="#fffbeb" opacity="0.9" />
+          <circle cx="240" cy="70" r="2" fill="#fffbeb" opacity="0.7" />
+          <circle cx="520" cy="38" r="2.5" fill="#fffbeb" opacity="0.85" />
+          <path d="M0 185 Q200 155 400 182 T800 175 L800 240 L0 240 Z" fill="#1e140c" opacity="0.75" />
+          <polygon points="120,185 155,110 190,185" fill="#120c07" opacity="0.8" />
+          <polygon points="610,185 650,95 690,185" fill="#120c07" opacity="0.8" />
+          <circle cx="400" cy="120" r="36" fill="none" stroke="${p.accent}" stroke-width="2" stroke-dasharray="6 4" opacity="0.75" />
+          <polygon points="400,88 408,112 432,120 408,128 400,152 392,128 368,120 392,112" fill="${p.accent}" />
+          <text x="24" y="218" fill="#fef3c7" font-size="14" font-weight="bold" font-family="sans-serif">✨ ${label}</text>
+        </svg>
+      `;
+    }
+
+    function getCurrentPageNumber() {
+      const u = UNITS[state.unitIndex];
+      const clampedOffset = Math.min(state.pageOffset, u.pageCount - 1);
+      state.pageOffset = clampedOffset;
+      return u.startPage + clampedOffset;
+    }
+
+    function updateTopbar() {
+      const currentPage = getCurrentPageNumber();
+      state.visitedPages.add(currentPage);
+      document.getElementById("pointsDisplay").textContent = `🏆 学院积分：${state.points} 分`;
+      document.getElementById("progressDisplay").textContent = `📖 已读页数：${state.visitedPages.size} / 500 页`;
+    }
+
+    function renderSidebar() {
+      const u = UNITS[state.unitIndex];
+      const yearSelect = document.getElementById("yearSelect");
+      yearSelect.innerHTML = YEARS.map(y =>
+        `<option value="${y.id}" ${y.id === u.year ? "selected" : ""}>${y.name}</option>`
+      ).join("");
+
+      const yearUnits = UNITS.filter(item => item.year === u.year);
+      const unitList = document.getElementById("unitList");
+      unitList.innerHTML = yearUnits.map(item => {
+        const idx = UNITS.findIndex(x => x.id === item.id);
+        const activeClass = idx === state.unitIndex ? "active" : "";
+        return `
+          <button class="unit-item ${activeClass}" data-unit-idx="${idx}">
+            <span>${item.title}</span>
+            <span class="pages-tag">P.${item.startPage}-${item.endPage}</span>
+          </button>
+        `;
+      }).join("");
+
+      unitList.querySelectorAll(".unit-item").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.unitIndex = parseInt(btn.dataset.unitIdx, 10);
+          state.pageOffset = 0;
+          state.builtWords = [];
+          saveState();
+          renderAll();
+        });
+      });
+
+      const jumpGrid = document.getElementById("pageJumpGrid");
+      let jumpHtml = "";
+      for (let i = 0; i < u.pageCount; i++) {
+        const pNum = u.startPage + i;
+        const active = i === state.pageOffset ? "active" : "";
+        jumpHtml += `<button class="page-dot-btn ${active}" data-offset="${i}">P.${pNum}</button>`;
+      }
+      jumpGrid.innerHTML = jumpHtml;
+      jumpGrid.querySelectorAll(".page-dot-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          state.pageOffset = parseInt(btn.dataset.offset, 10);
+          state.builtWords = [];
+          saveState();
+          renderAll();
+        });
+      });
+    }
+
+    function highlightVocab(text, vocabList) {
+      let out = text;
+      vocabList.forEach(v => {
+        const re = new RegExp(`\\b(${v.word})\\b`, "gi");
+        out = out.replace(re, `<span class="vocab-word" data-speak="$1" title="点击朗读单词">$1</span>`);
+      });
+      return out;
+    }
+
+    function renderBookPage() {
+      const u = UNITS[state.unitIndex];
+      const pageNum = getCurrentPageNumber();
+      const offset = state.pageOffset;
+      const stage = document.getElementById("bookStage");
+
+      const pageModes = [
+        "图文故事与语境猜词 (Story & Context)",
+        "魔杖词汇工坊 (Vocabulary Cards)",
+        "阅读侦探闯关 (Reading Detective)",
+        "魔法句型拼图游戏 (Spell Word Builder)",
+        "场景拓展与复盘 (Scene & Review)",
+        "小巫师综合挑战 (Master Challenge)"
+      ];
+      const modeLabel = pageModes[offset % pageModes.length];
+      const storyText = u.story.join(" ");
+      const vocabCardsHtml = u.vocab.map((v, i) => `
+        <div class="flip-card" data-card-idx="${i}">
+          <div class="vocab-top">
+            <span class="vocab-term">${v.word}</span>
+            <span class="vocab-phonetic">${v.phonetic}</span>
+          </div>
+          <div class="vocab-clue">💡 ${v.clue}</div>
+          <div class="vocab-example">“${v.example}”</div>
+          <div class="vocab-meaning">中文释义：${v.meaning}（点击卡片可切换显隐）</div>
+        </div>
+      `).join("");
+
+      const optionsHtml = u.options.map((opt, idx) =>
+        `<button class="opt-btn" data-opt-idx="${idx}">${String.fromCharCode(65 + idx)}. ${opt}</button>`
+      ).join("");
+
+      const shuffled = [...u.sentence].sort((a, b) => a.localeCompare(b));
+      const poolHtml = shuffled.map((w, idx) =>
+        `<button class="word-chip" data-word="${w}" data-chip-id="${idx}">${w}</button>`
+      ).join("");
+
+      stage.innerHTML = `
+        <div>
+          <div class="page-header">
+            <div>
+              <div class="page-kicker">Year ${u.year} · ${u.title} · ${modeLabel}</div>
+              <div class="page-title">${u.scene}</div>
+            </div>
+            <div class="page-num-box">
+              <div>第 <strong>${pageNum}</strong> / 500 页</div>
+              <div style="color:var(--ink-muted);">单元第 ${offset + 1} / ${u.pageCount} 页</div>
+            </div>
+          </div>
+
+          <div class="illustration-card">
+            ${renderIllustrationSVG(u.theme, `${u.scene} — Page ${pageNum}`)}
+            <div class="scene-caption">
+              <span>🎨 图文导读：观察画面并结合英文句子推测生词含义。</span>
+              <button class="btn btn-small" id="speakStoryBtn">🔊 朗读本页英文故事</button>
+            </div>
+          </div>
+
+          <div class="story-box">
+            <div class="story-toolbar">
+              <strong style="color:var(--crimson);">📜 魔法故事段落（点击高亮生词可听发音）</strong>
+              <button class="btn btn-ghost btn-small" style="color:var(--ink); border-color:var(--border);" id="toggleCnBtn">显示/隐藏中文翻译</button>
+            </div>
+            <p class="story-en">${highlightVocab(storyText, u.vocab)}</p>
+            <div class="story-cn" id="storyCnBox">🇨🇳 参考译文：${u.cn}</div>
+          </div>
+
+          <div style="margin-bottom:8px; font-weight:700; color:var(--crimson);">🪄 核心词汇卡（点击任意卡片查看中文释义并朗读）</div>
+          <div class="vocab-grid">${vocabCardsHtml}</div>
+
+          <div class="quiz-card">
+            <div class="quiz-q">🕵️ 阅读理解侦探：${u.question}</div>
+            <div class="options-list" id="optionsList">${optionsHtml}</div>
+            <div class="feedback-box" id="quizFeedback"></div>
+          </div>
+
+          <div class="quiz-card">
+            <div class="quiz-q">⚡ 魔咒语序小游戏：点击下方词块拼出正确英语句子</div>
+            <div class="word-pool" id="wordPool">${poolHtml}</div>
+            <div style="display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:8px;">
+              <div id="builtSentenceDisplay" style="font-weight:700; color:var(--sapphire);">已选词块：（请点击上方词块）</div>
+              <div style="display:flex; gap:8px;">
+                <button class="btn btn-small btn-ghost" style="color:var(--ink); border-color:var(--border);" id="clearSentenceBtn">清空重拼</button>
+                <button class="btn btn-small" id="checkSentenceBtn">校验魔咒</button>
+              </div>
+            </div>
+            <div class="feedback-box" id="gameFeedback"></div>
+          </div>
+        </div>
+
+        <div class="book-footer">
+          <div style="display:flex; gap:10px;">
+            <button class="btn" id="prevPageBtn" ${pageNum <= 1 ? "disabled" : ""}>← 上一页</button>
+            <button class="btn" id="nextPageBtn" ${pageNum >= 500 ? "disabled" : ""}>下一页 →</button>
+          </div>
+          <div class="note-box">
+            全书共 500 页（7 个学年 · 80 个单元），支持连续翻页、语音朗读与本地自动存档。
+          </div>
+        </div>
+      `;
+
+      document.getElementById("speakStoryBtn").addEventListener("click", () => speakText(storyText));
+      document.getElementById("toggleCnBtn").addEventListener("click", () => {
+        document.getElementById("storyCnBox").classList.toggle("show");
+      });
+
+      stage.querySelectorAll(".vocab-word").forEach(el => {
+        el.addEventListener("click", () => speakText(el.dataset.speak));
+      });
+
+      stage.querySelectorAll(".flip-card").forEach(card => {
+        card.addEventListener("click", () => {
+          const idx = parseInt(card.dataset.cardIdx, 10);
+          card.classList.toggle("revealed");
+          speakText(u.vocab[idx].word);
+          if (addPointsOnce(`vocab_${u.id}_${pageNum}_${idx}`, 5)) {
+            // points updated
+          }
+        });
+      });
+
+      stage.querySelectorAll(".opt-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const chosen = parseInt(btn.dataset.optIdx, 10);
+          const fb = document.getElementById("quizFeedback");
+          stage.querySelectorAll(".opt-btn").forEach(b => b.classList.remove("correct", "wrong"));
+          fb.classList.add("show");
+          if (chosen === u.answer) {
+            btn.classList.add("correct");
+            fb.classList.remove("no");
+            fb.classList.add("ok");
+            const gained = addPointsOnce(`quiz_${u.id}_${pageNum}`, 15);
+            fb.textContent = `✅ 答对啦！${gained ? "（+15 学院积分）" : ""} 解析：${u.explain}`;
+          } else {
+            btn.classList.add("wrong");
+            fb.classList.remove("ok");
+            fb.classList.add("no");
+            fb.textContent = `❌ 再想一想！提示：${u.explain}`;
+          }
+        });
+      });
+
+      const builtDisplay = document.getElementById("builtSentenceDisplay");
+      stage.querySelectorAll(".word-chip").forEach(chip => {
+        chip.addEventListener("click", () => {
+          if (chip.disabled) return;
+          chip.disabled = true;
+          chip.style.opacity = "0.4";
+          state.builtWords.push(chip.dataset.word);
+          builtDisplay.textContent = `已选词块：${state.builtWords.join(" ")}`;
+          speakText(chip.dataset.word);
+        });
+      });
+
+      document.getElementById("clearSentenceBtn").addEventListener("click", () => {
+        state.builtWords = [];
+        builtDisplay.textContent = "已选词块：（请点击上方词块）";
+        stage.querySelectorAll(".word-chip").forEach(c => {
+          c.disabled = false;
+          c.style.opacity = "1";
+        });
+        document.getElementById("gameFeedback").classList.remove("show");
+      });
+
+      document.getElementById("checkSentenceBtn").addEventListener("click", () => {
+        const gfb = document.getElementById("gameFeedback");
+        const userSent = state.builtWords.join(" ");
+        const targetSent = u.sentence.join(" ");
+        gfb.classList.add("show");
+        if (userSent === targetSent) {
+          gfb.classList.remove("no");
+          gfb.classList.add("ok");
+          const gained = addPointsOnce(`game_${u.id}_${pageNum}`, 20);
+          gfb.textContent = `⚡ 魔咒拼写成功！${gained ? "（+20 学院积分）" : ""} 完整句子：${targetSent}`;
+          speakText(targetSent);
+        } else {
+          gfb.classList.remove("ok");
+          gfb.classList.add("no");
+          gfb.textContent = `🪄 词序还差一点点！参考句式：${targetSent}`;
+        }
+      });
+
+      document.getElementById("prevPageBtn").addEventListener("click", () => goToGlobalPage(pageNum - 1));
+      document.getElementById("nextPageBtn").addEventListener("click", () => goToGlobalPage(pageNum + 1));
+    }
+
+    function goToGlobalPage(targetPage) {
+      if (targetPage < 1 || targetPage > 500) return;
+      const foundIdx = UNITS.findIndex(item => targetPage >= item.startPage && targetPage <= item.endPage);
+      if (foundIdx !== -1) {
+        state.unitIndex = foundIdx;
+        state.pageOffset = targetPage - UNITS[foundIdx].startPage;
+        state.builtWords = [];
+        saveState();
+        renderAll();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
+
+    function renderAll() {
+      updateTopbar();
+      renderSidebar();
+      renderBookPage();
+    }
+
+    document.getElementById("yearSelect").addEventListener("change", (e) => {
+      const selectedYear = parseInt(e.target.value, 10);
+      const firstIdx = UNITS.findIndex(item => item.year === selectedYear);
+      if (firstIdx !== -1) {
+        state.unitIndex = firstIdx;
+        state.pageOffset = 0;
+        state.builtWords = [];
+        saveState();
+        renderAll();
+      }
+    });
+
+    document.getElementById("resetProgressBtn").addEventListener("click", () => {
+      state.unitIndex = 0;
+      state.pageOffset = 0;
+      state.points = 0;
+      state.visitedPages = new Set([1]);
+      state.answeredKeys = new Set();
+      state.builtWords = [];
+      localStorage.removeItem("hogwarts_y4_book_v1");
+      renderAll();
+    });
+
+    loadState();
+    renderAll();
+  </script>
+</body>
+</html>
