@@ -4,3 +4,23 @@ function openPractice(){answered=0;document.querySelector('#practice-title').tex
 function answer(button){const box=button.closest('.question');if(box.dataset.done)return;box.dataset.done='1';const i=+box.dataset.q,q=questions[i],choice=+button.dataset.answer;box.querySelectorAll('.answer').forEach((b,n)=>{b.disabled=true;if(n===q.ok)b.classList.add('correct')});const ex=box.querySelector('.explanation');ex.hidden=false;ex.className='result';ex.textContent=(choice===q.ok?'答对了！':'再记一记：')+q.why;answered++;const d=getData();d.sessions.push({date:today(),minutes:1,subject:'每日练习'});if(choice!==q.ok)d.mistakes.push({question:q.q,answer:q.a[q.ok],date:today()});const yesterday=new Date(Date.now()-86400000).toLocaleDateString('sv-SE');d.streak=d.lastStudy===today()?d.streak:(d.lastStudy===yesterday?(d.streak||0)+1:1);d.lastStudy=today();saveData(d);render();if(answered===questions.length){const done=document.createElement('p');done.className='result';done.textContent='这一组完成啦，继续保持！';document.querySelector('#practice-body').append(done)}}
 function showHistory(){const d=getData(),body=document.querySelector('#practice-body');document.querySelector('#practice-title').textContent='学习记录';body.innerHTML=d.sessions.length?d.sessions.slice(-12).reverse().map(x=>`<div class="history-row">${x.date}　${x.subject}　约 ${x.minutes} 分钟</div>`).join(''):'<p class="history-empty">还没有学习记录，完成每日练习后会显示在这里。</p>';document.querySelector('#practice-dialog').showModal()}function showMistakes(){const d=getData(),body=document.querySelector('#practice-body');document.querySelector('#practice-title').textContent='错题复习';body.innerHTML=d.mistakes.length?d.mistakes.slice(-20).reverse().map(x=>`<div class="history-row">${x.date}　${x.question}<br><span style="color:#628066">参考答案：${x.answer}</span></div>`).join(''):'<p class="history-empty">太棒了，暂时没有待复习错题。</p>';document.querySelector('#practice-dialog').showModal()}
 document.querySelectorAll('#daily-start,#daily-card').forEach(b=>b.addEventListener('click',openPractice));document.querySelector('#mistakes-card').addEventListener('click',showMistakes);document.querySelector('#records-card').addEventListener('click',showHistory);document.querySelector('#export-data').addEventListener('click',()=>{const blob=new Blob([JSON.stringify(getData(),null,2)],{type:'application/json'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='family-learning-records.json';a.click();URL.revokeObjectURL(a.href)});document.querySelector('#grade').addEventListener('change',e=>localStorage.setItem('family-learning-grade',e.target.value));document.querySelector('#grade').value=localStorage.getItem('family-learning-grade')||'4';render();if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(()=>{});
+/* 英语学习站按需展开：默认收起，点英语卡就地展开，再点收起；带 #english-learning 的链接自动展开 */
+(function(){
+  var toggle=document.getElementById('english-toggle'),panel=document.getElementById('english-learning');
+  if(!toggle||!panel)return;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setOpen(open,scroll){
+    panel.classList.toggle('is-open',open);
+    toggle.setAttribute('aria-expanded',open?'true':'false');
+    if(open&&scroll)toggle.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  toggle.addEventListener('click',function(e){
+    if(e.metaKey||e.ctrlKey||e.shiftKey||e.altKey||e.button!==0)return;
+    e.preventDefault();
+    var open=!panel.classList.contains('is-open');
+    setOpen(open,open);
+    if(open&&history.replaceState)history.replaceState(null,'','#english-learning');
+  });
+  if(location.hash==='#english-learning')setOpen(true,false);
+  window.addEventListener('hashchange',function(){if(location.hash==='#english-learning')setOpen(true,true)});
+})();

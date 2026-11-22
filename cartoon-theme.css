@@ -632,3 +632,19 @@ dialog::backdrop{background:rgba(46,42,39,.55);backdrop-filter:blur(3px)}
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
 }
+
+/* ── 15. 英语区块按需展开（点学科卡就地展开，再点收起）────────── */
+.js .english-learning{display:none}
+.js .english-learning.is-open{display:block;animation:panel-in .22s ease-out}
+@keyframes panel-in{from{opacity:0;transform:translateY(-10px)}to{opacity:1;transform:none}}
+
+/* 展开态给卡片明确回馈，暗示可以再点一次收起 */
+.subject-card.english[aria-expanded="true"]{
+  background:linear-gradient(100deg,#eef4ff,#f7efff);
+  box-shadow:var(--hard-lg);
+}
+.subject-card.english[aria-expanded="true"] .card-arrow{color:var(--blue)}
+.subject-card.english[aria-expanded="true"] .subject-icon{background:var(--blue);color:#fff}
+/* 展开时箭头转向，配合高亮提示"再点可收起" */
+.subject-card.english .card-arrow{transition:transform .18s}
+.subject-card.english[aria-expanded="true"] .card-arrow{transform:rotate(90deg)}
