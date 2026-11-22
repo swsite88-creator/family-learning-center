@@ -46,3 +46,8 @@
 ## 自定义域名准备（2026-11-22）
 
 用户指定使用 `020c.cc.cd`（根域名）。GitHub Pages 需在仓库 Settings → Pages → Custom domain 配置该域名；DNS 根记录按 GitHub 官方文档配置。需要域名 DNS 控制台权限，Codex 当前未获该控制台授权，故不直接更改 DNS。
+
+
+## 域名更新
+
+用户选择将访问地址改为 www.020c.cc.cd。GitHub Pages 应配置该主机名；DNSHE 需要添加 www CNAME 指向 swsite88-creator.github.io。根域名如需自动跳转，可另配 GitHub Pages 的根域 A 记录。

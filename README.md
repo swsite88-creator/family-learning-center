@@ -20,6 +20,4 @@ PWA 安装需 HTTPS 或 localhost；跨设备同步暂不提供。英语跟读�
 
 ## 绑定自定义域名
 
-准备使用 `020c.cc.cd`。GitHub Pages 仓库设置里的 Custom domain 填写此域名；DNS 根域名需要配置 GitHub Pages 官方列出的四条 A 记录（可按 DNS 提供商支持情况一并添加四条 AAAA 记录）。详细步骤见项目对话说明和 GitHub Pages 文档。HTTPS 证书签发后，在 Pages 设置启用 Enforce HTTPS。
-
-GitHub Pages 根域名 DNS（在 DNS 服务商处，主机记录通常填 `@`）：添加 A 记录 `185.199.108.153`、`185.199.109.153`、`185.199.110.153`、`185.199.111.153`。如服务商支持并需要 IPv6，可添加 AAAA：`2606:50c0:8000::153`、`2606:50c0:8001::153`、`2606:50c0:8002::153`、`2606:50c0:8003::153`。不要删除域名已有的邮件/MX 记录。
+GitHub Pages 自定义域名设为 `www.020c.cc.cd`。DNSHE 添加一条 CNAME：记录名称 `www`，记录内容 `swsite88-creator.github.io`，TTL 自动。不要把 CNAME 指向根域名或添加 A 记录到 `www`。如果还希望访问不带 www 的 `020c.cc.cd` 并自动跳转到 www，可另外保留根域名的 GitHub Pages A 记录。DNS 传播后，在 Pages 设置启用 Enforce HTTPS。
