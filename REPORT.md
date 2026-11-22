@@ -51,3 +51,9 @@
 ## 域名更新
 
 用户选择将访问地址改为 www.020c.cc.cd。GitHub Pages 应配置该主机名；DNSHE 需要添加 www CNAME 指向 swsite88-creator.github.io。根域名如需自动跳转，可另配 GitHub Pages 的根域 A 记录。
+
+## 兴趣驱动项目重构（2026-11-22）
+
+针对“内容仍像课本练习、缺少实用性和兴趣”的反馈，原有分科短题替换为兴趣主题项目：游戏机制设计、运动训练数据、友善栖息地规划、太空资源系统、证据型侦探推理、快闪小店经营。任务按四至六年级逐步增加变量控制、样本/不确定性、系统风险和方案权衡等复杂度。每项需要提交三类过程证据（设计、测试/资料、修改理由），并提供自我检查项，不以单一答案打分。文本草稿和完成状态保存在当前浏览器本机，不上传或采集姓名等儿童信息。
+
+设计依据：教育部 2022 版课程实施强调真实生活情境、主题/项目活动和跨学科实践；EEF 建议把计划、监控和评价等自我调节策略嵌入具体学习任务。参考[教育部课程方案与标准说明](https://www.moe.gov.cn/fbh/live/2022/54382/twwd/202204/t20220421_620224.html)与[EEF 元认知和自我调节指南](https://educationendowmentfoundation.org.uk/education-evidence/guidance-reports/metacognition?search_term=Metacognition%3Fsearch_term%3DMetacognition)。
