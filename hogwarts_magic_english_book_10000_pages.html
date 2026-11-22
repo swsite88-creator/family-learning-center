@@ -144,6 +144,14 @@
       .layout {
         grid-template-columns: 1fr;
       }
+
+      /* 竖排布局下目录不再撑开整页：100 个单元收进限高滚动区，正文（朗读、生词、小测验）紧随其后 */
+      .unit-list {
+        max-height: 45vh;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 4px;
+      }
     }
 
     .sidebar {
