@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#fffbf2"><meta name="description" content="哈利·波特魔法英语系列书架：英语互动书合集，支持手机和平板"><link rel="manifest" href="manifest.webmanifest"><link rel="icon" href="icon.svg" type="image/svg+xml"><link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="cartoon-theme.css"><title>魔法书架 · 哈利·波特英语系列</title>
+<style>
+.book-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:22px;margin-top:24px}
+.book-card{display:flex;flex-direction:column;gap:13px;padding:20px;border:3px solid #2E2A27;border-radius:18px;box-shadow:6px 6px 0 rgba(46,42,39,.9);background:#fff;text-decoration:none;color:inherit}
+.book-card:active{transform:translate(3px,4px);box-shadow:2px 2px 0 rgba(46,42,39,.9)}
+.book-cover{width:100%;height:140px;display:flex;align-items:center;justify-content:center;font-size:52px;border-radius:12px;border:2.5px solid #2E2A27;background:linear-gradient(120deg,#fdecc8,#f7c8dd 55%,#cde4ff)}
+.book-title{font-size:19px;line-height:1.5;font-weight:800}
+.book-desc{font-size:14.5px;color:#5B655F;line-height:1.7;flex:1}
+.book-tags{display:flex;flex-wrap:wrap;gap:8px}
+.book-tag{font-size:12.5px;padding:4px 11px;border:2px solid #2E2A27;border-radius:999px;background:#FFD23F;font-weight:700;white-space:nowrap}
+.book-tag.now{background:#5B8DEF;color:#fff}
+.book-open{display:inline-flex;align-items:center;justify-content:center;padding:11px 16px;border:3px solid #2E2A27;border-radius:14px;background:#FF8A3D;color:#fff;font-weight:800;font-size:15px}
+.book-ghost{border:2.5px dashed #c9beac;box-shadow:none;background:transparent;padding:20px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:#8a8378;text-align:center;min-height:200px;border-radius:18px}
+.book-ghost b{font-size:15.5px}
+.book-ghost small{font-size:13px;color:#a39a8b}
+@media (max-width:600px){.book-grid{grid-template-columns:1fr}}
+</style></head>
+<body><header class="topbar"><a class="brand" href="./"><span class="brand-mark">✦</span><span>魔法书架</span></a><nav><a href="./">返回首页</a></nav></header>
+<main id="home"><section id="series" class="section"><div class="section-heading"><div><p class="eyebrow">MAGIC BOOKSHELF · ENGLISH SERIES</p><h2>哈利·波特魔法英语系列</h2></div><span class="section-note">点开一本魔法书，开始听读冒险</span></div>
+<p class="english-hint" style="max-width:680px">这里是英语互动书合集：每本书都有完整的故事目录、朗读、词汇和闯关练习。阅读进度只保存在本机浏览器，不上传。</p>
+<div class="book-grid">
+<a class="book-card" href="./hogwarts_english_adventure_grade_4_interactive_book.html"><span class="book-cover">🏰</span><span class="book-title">霍格沃茨四年级魔法英语互动书</span><span class="book-desc">完整互动故事 · 朗读、词汇、选择题与拼句闯关，适合四年级课外听读，也可当睡前故事一起听。</span><span class="book-tags"><span class="book-tag" data-grade="4">四年级</span><span class="book-tag">🔊 朗读</span><span class="book-tag">✏ 练习</span></span><span class="book-open">打开这本书 →</span></a>
+<div class="book-ghost"><b>下一本魔法书 · 制作中</b><small>新的故事和新的年级会陆续上架到这个书架</small></div>
+</div>
+</section></main>
+<footer><span>家庭学习中心</span><span>学习记录保存在本机 · 无广告 · 无账号</span><a href="./">返回首页</a></footer>
+<script>
+(function(){
+try{
+var g=Number(localStorage.getItem('family-learning-grade'))||4;
+document.querySelectorAll('.book-tag[data-grade]').forEach(function(t){
+if(Number(t.dataset.grade)===g){t.classList.add('now');t.textContent+=' · 当前年级'}
+});
+}catch(e){}
+if('serviceWorker'in navigator&&location.protocol.startsWith('http'))navigator.serviceWorker.register('./sw.js').catch(function(){});
+})();
+</script>
+</body></html>
