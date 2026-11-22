@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>霍格沃茨四年级魔法英语互动书 · 10000页完整版</title>
+  <style>
+    :root {
+      --bg-dark: #16120e;
+      --parchment: #f7efe0;
+      --parchment-2: #efe2c6;
+      --ink: #241911;
+      --ink-muted: #5b4634;
+      --gold: #c9983b;
+      --gold-bright: #e8be63;
+      --crimson: #7f1d1d;
+      --emerald: #14532d;
+      --sapphire: #1e3a8a;
+      --amber-soft: #fef3c7;
+      --border: #cbb489;
+      --shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "PingFang SC", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+      background: radial-gradient(circle at top, #2a2017 0%, var(--bg-dark) 75%);
+      color: var(--ink);
+      min-height: 100vh;
+      line-height: 1.65;
+    }
+
+    .topbar {
+      background: rgba(20, 15, 11, 0.94);
+      color: var(--parchment);
+      border-bottom: 2px solid var(--gold);
+      padding: 12px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-badge {
+      background: linear-gradient(135deg, var(--crimson), #450a0a);
+      color: var(--gold-bright);
+      border: 1px solid var(--gold);
+      padding: 5px 10px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+
+    .brand h1 {
+      font-size: 17px;
+      font-weight: 700;
+      color: #fff6e5;
+    }
+
+    .topbar-controls {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+      font-size: 13px;
+    }
+
+    .pill {
+      background: rgba(255, 248, 231, 0.1);
+      border: 1px solid rgba(232, 190, 99, 0.45);
+      color: #fff3d6;
+      padding: 5px 11px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    select, button {
+      font-family: inherit;
+      cursor: pointer;
+    }
+
+    .btn {
+      background: linear-gradient(180deg, #f3d184, var(--gold));
+      color: #231609;
+      border: 1px solid #9b6f1e;
+      border-radius: 8px;
+      padding: 7px 13px;
+      font-weight: 700;
+      font-size: 13px;
+      transition: transform 0.12s ease, filter 0.15s ease;
+    }
+
+    .btn:hover:not(:disabled) {
+      filter: brightness(1.06);
+      transform: translateY(-1px);
+    }
+
+    .btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+    }
+
+    .btn-ghost {
+      background: rgba(255, 248, 231, 0.12);
+      color: #fff6e5;
+      border: 1px solid rgba(232, 190, 99, 0.5);
+    }
+
+    .btn-small {
+      padding: 4px 10px;
+      font-size: 12px;
+      border-radius: 6px;
+    }
+
+    .layout {
+      max-width: 1280px;
+      margin: 22px auto;
+      padding: 0 16px 40px;
+      display: grid;
+      grid-template-columns: 290px 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 920px) {
+      .layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .sidebar {
+      background: var(--parchment);
+      border: 2px solid var(--gold);
+      border-radius: 14px;
+      padding: 16px;
+      box-shadow: var(--shadow);
+      height: fit-content;
+      position: sticky;
+      top: 76px;
+      max-height: calc(100vh - 96px);
+      overflow-y: auto;
+    }
+
+    @media (max-width: 920px) {
+      .sidebar {
+        position: static;
+        max-height: none;
+      }
+    }
+
+    .sidebar h2 {
+      font-size: 15px;
+      color: var(--crimson);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .year-select {
+      width: 100%;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #fffdf8;
+      color: var(--ink);
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+
+    .unit-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 14px;
+    }
+
+    .unit-item {
+      text-align: left;
+      background: #fffdf8;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 8px 10px;
+      font-size: 12.5px;
+      color: var(--ink);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .unit-item.active {
+      background: linear-gradient(135deg, var(--crimson), #581111);
+      color: #fff8e7;
+      border-color: var(--gold);
+      font-weight: 700;
+    }
+
+    .unit-item .pages-tag {
+      font-size: 11px;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+
+    .page-jump-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .page-dot-btn {
+      padding: 5px 0;
+      font-size: 11px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #fffdf8;
+      color: var(--ink);
+      font-weight: 600;
+    }
+
+    .page-dot-btn.active {
+      background: var(--gold);
+      color: #1f1307;
+      border-color: #8c6216;
+    }
+
+    .book-stage {
+      background: linear-gradient(180deg, var(--parchment), var(--parchment-2));
+      border: 3px solid var(--gold);
+      border-radius: 16px;
+      padding: 24px 28px;
+      box-shadow: var(--shadow);
+      min-height: 640px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    @media (max-width: 600px) {
+      .book-stage {
+        padding: 16px;
+      }
+    }
+
+    .page-header {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 12px;
+      margin-bottom: 18px;
+    }
+
+    .page-kicker {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--crimson);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .page-title {
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--ink);
+      margin-top: 2px;
+    }
+
+    .page-num-box {
+      background: #fffdf8;
+      border: 1px solid var(--gold);
+      border-radius: 10px;
+      padding: 6px 12px;
+      text-align: right;
+      font-size: 12px;
+    }
+
+    .page-num-box strong {
+      font-size: 16px;
+      color: var(--crimson);
+    }
+
+    .illustration-card {
+      background: #fffdf7;
+      border: 2px solid var(--gold);
+      border-radius: 12px;
+      padding: 12px;
+      margin-bottom: 18px;
+      box-shadow: inset 0 0 24px rgba(201, 152, 59, 0.14);
+    }
+
+    .illustration-card svg {
+      width: 100%;
+      max-height: 250px;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+
+    .scene-caption {
+      margin-top: 8px;
+      font-size: 12.5px;
+      color: var(--ink-muted);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .story-box {
+      background: rgba(255, 253, 247, 0.85);
+      border-left: 4px solid var(--crimson);
+      border-radius: 8px;
+      padding: 16px 18px;
+      margin-bottom: 16px;
+    }
+
+    .story-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .story-en {
+      font-size: 16.5px;
+      line-height: 1.8;
+      color: #1c120b;
+      margin-bottom: 10px;
+    }
+
+    .story-en .vocab-word {
+      background: #fde68a;
+      border-bottom: 2px solid #b45309;
+      padding: 1px 5px;
+      border-radius: 4px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .story-cn {
+      font-size: 13.5px;
+      color: var(--ink-muted);
+      background: #f6ebd4;
+      padding: 10px 12px;
+      border-radius: 8px;
+      display: none;
+    }
+
+    .story-cn.show {
+      display: block;
+    }
+
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(245px, 1fr));
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .flip-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--gold);
+      border-radius: 12px;
+      padding: 14px;
+      cursor: pointer;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .flip-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 14px rgba(0, 0, 0, 0.12);
+    }
+
+    .vocab-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+    }
+
+    .vocab-term {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--crimson);
+    }
+
+    .vocab-phonetic {
+      font-size: 12.5px;
+      color: var(--ink-muted);
+    }
+
+    .vocab-clue {
+      font-size: 12px;
+      color: #92400e;
+      background: var(--amber-soft);
+      padding: 3px 8px;
+      border-radius: 999px;
+      display: inline-block;
+      margin: 6px 0;
+    }
+
+    .vocab-example {
+      font-size: 13.5px;
+      color: var(--ink);
+      margin-top: 4px;
+    }
+
+    .vocab-meaning {
+      margin-top: 8px;
+      padding-top: 8px;
+      border-top: 1px dashed var(--border);
+      font-size: 13px;
+      color: var(--emerald);
+      font-weight: 700;
+      display: none;
+    }
+
+    .flip-card.revealed .vocab-meaning {
+      display: block;
+    }
+
+    .quiz-card {
+      background: #fffdf8;
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 14px;
+    }
+
+    .quiz-q {
+      font-weight: 700;
+      font-size: 15px;
+      margin-bottom: 10px;
+      color: var(--ink);
+    }
+
+    .options-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .opt-btn {
+      text-align: left;
+      padding: 9px 13px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: #faf3e3;
+      color: var(--ink);
+      font-size: 13.5px;
+      transition: background 0.12s ease;
+    }
+
+    .opt-btn:hover {
+      background: #f3e3bf;
+    }
+
+    .opt-btn.correct {
+      background: #dcfce7;
+      border-color: #15803d;
+      color: #14532d;
+      font-weight: 700;
+    }
+
+    .opt-btn.wrong {
+      background: #fee2e2;
+      border-color: #b91c1c;
+      color: #7f1d1d;
+    }
+
+    .feedback-box {
+      margin-top: 10px;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      display: none;
+    }
+
+    .feedback-box.show {
+      display: block;
+    }
+
+    .feedback-box.ok {
+      background: #dcfce7;
+      color: #14532d;
+      border: 1px solid #86efac;
+    }
+
+    .feedback-box.no {
+      background: #fef2f2;
+      color: #7f1d1d;
+      border: 1px solid #fca5a5;
+    }
+
+    .word-pool {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      min-height: 44px;
+      padding: 10px;
+      border-radius: 8px;
+      background: #f7eed9;
+      border: 1px dashed var(--border);
+      margin-bottom: 10px;
+    }
+
+    .word-chip {
+      background: #fffdf8;
+      border: 1px solid var(--gold);
+      border-radius: 7px;
+      padding: 5px 11px;
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--ink);
+    }
+
+    .book-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-top: 2px solid var(--border);
+      padding-top: 14px;
+      margin-top: 18px;
+    }
+
+    .note-box {
+      font-size: 12px;
+      color: var(--ink-muted);
+      background: rgba(255, 253, 247, 0.7);
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-badge">HOGWARTS Y4 · 10000P</span>
+      <h1>霍格沃茨四年级魔法英语互动书</h1>
+    </div>
+    <div class="topbar-controls">
+      <span class="pill" id="pointsDisplay">🏆 学院积分：0 分</span>
+      <span class="pill" id="progressDisplay">📖 已读页数：1 / 10000 页</span>
+      <select id="voiceRate" class="pill" style="color:#fff3d6; background:rgba(255,248,231,0.14);">
+        <option value="0.9" style="color:#1a120b;">🔊 正常语速 (0.9x)</option>
+        <option value="0.72" style="color:#1a120b;">🐢 慢速跟读 (0.72x)</option>
+      </select>
+      <button class="btn btn-ghost btn-small" id="resetProgressBtn">重置进度</button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="sidebar">
+      <h2>
+        <span>魔法书架目录</span>
+        <span style="font-size:11px; color:var(--ink-muted);">共 10000 页</span>
+      </h2>
+      <label for="yearSelect" style="font-size:12px; color:var(--ink-muted); display:block; margin-bottom:4px;">选择卷册：</label>
+      <select id="yearSelect" class="year-select"></select>
+
+      <div class="unit-list" id="unitList"></div>
+
+      <div style="font-size:12px; color:var(--ink-muted); font-weight:700;">本单元页码跳转（每单元 10 页）：</div>
+      <div class="page-jump-grid" id="pageJumpGrid"></div>
+    </aside>
+
+    <main class="book-stage" id="bookStage"></main>
+  </div>
+
+  <script>
+const KEY="hogwarts_10k_v1";
+const VOL=["Vol.1 对角巷与魔杖","Vol.2 站台与分院","Vol.3 魔法课堂","Vol.4 城堡密道","Vol.5 飞天扫帚赛场","Vol.6 神奇动物","Vol.7 魔药地窖","Vol.8 图书馆谜案","Vol.9 禁林探险","Vol.10 毕业魔法大会"];
+const MODES=["魔法故事 · 第一幕","魔法故事 · 第二幕","魔法故事 · 第三幕","魔杖词汇工坊","阅读侦探闯关","魔法句型拼图","过去式魔药实验室","完形填空咒语","听写小测验","单元 Boss 挑战"];
+const mk=(cat,rows,vb)=>rows.map(r=>vb?{cat,w:r[0],past:r[1],ipa:r[2],cn:r[3],ex:r[4]}:{cat,w:r[0],ipa:r[1],cn:r[2],ex:r[3]});
+const W={
+feel:mk("feel",[["nervous","/ˈnɜːvəs/","紧张的","Mia felt [nervous] before the big test."],["curious","/ˈkjʊəriəs/","好奇的","The [curious] kitten opened the box."],["proud","/praʊd/","自豪的","Dad was [proud] of his son."],["brave","/breɪv/","勇敢的","A [brave] girl saved the puppy."],["puzzled","/ˈpʌzld/","困惑的","Ben looked [puzzled] at the hard question."],["delighted","/dɪˈlaɪtɪd/","非常高兴的","We were [delighted] with the gift."],["worried","/ˈwʌrid/","担心的","Mum was [worried] about the storm."],["confident","/ˈkɒnfɪdənt/","自信的","Nina felt [confident] on the stage."]]),
+desc:mk("desc",[["ancient","/ˈeɪnʃənt/","古老的","The [ancient] castle is very old."],["enormous","/ɪˈnɔːməs/","巨大的","An [enormous] whale swam by."],["shiny","/ˈʃaɪni/","闪亮的","She has a [shiny] new coin."],["mysterious","/mɪˈstɪəriəs/","神秘的","A [mysterious] noise came from the attic."],["dusty","/ˈdʌsti/","满是灰尘的","The [dusty] books were on the shelf."],["narrow","/ˈnærəʊ/","狭窄的","The path is [narrow]."],["silent","/ˈsaɪlənt/","寂静的","The night was [silent]."],["glowing","/ˈɡləʊɪŋ/","发光的","A [glowing] star appeared."]]),
+obj:mk("obj",[["lantern","/ˈlæntən/","灯笼","Dad lit the [lantern]."],["scroll","/skrəʊl/","卷轴","The king read the [scroll]."],["compass","/ˈkʌmpəs/","指南针","The [compass] points north."],["crystal","/ˈkrɪstl/","水晶","The [crystal] sparkled in the sun."],["feather","/ˈfeðə(r)/","羽毛","A white [feather] fell down."],["mirror","/ˈmɪrə(r)/","镜子","She looked in the [mirror]."],["badge","/bædʒ/","徽章","He wears a school [badge]."],["cloak","/kləʊk/","斗篷","The wizard wore a long [cloak]."]]),
+place:mk("place",[["tower","/ˈtaʊə(r)/","塔楼","We climbed the [tower]."],["corridor","/ˈkɒrɪdɔː(r)/","走廊","Do not run in the [corridor]."],["library","/ˈlaɪbrəri/","图书馆","I read books in the [library]."],["dungeon","/ˈdʌndʒən/","地牢","The [dungeon] was cold and dark."],["garden","/ˈɡɑːdn/","花园","Flowers grow in the [garden]."],["courtyard","/ˈkɔːtjɑːd/","庭院","Children played in the [courtyard]."]]),
+creature:mk("creature",[["owl","/aʊl/","猫头鹰","The [owl] sleeps in the day."],["dragon","/ˈdræɡən/","龙","The [dragon] breathed fire."],["unicorn","/ˈjuːnɪkɔːn/","独角兽","A [unicorn] has one horn."],["toad","/təʊd/","蟾蜍","The [toad] jumped into the pond."],["bat","/bæt/","蝙蝠","A [bat] flew out of the cave."],["kitten","/ˈkɪtn/","小猫","The [kitten] drank some milk."]]),
+move:mk("move",[["hurry","hurried","/ˈhʌri/","匆忙","Ben [hurried] to the bus stop."],["tiptoe","tiptoed","/ˈtɪptəʊ/","踮着脚走","She [tiptoed] past the sleeping cat."],["climb","climbed","/klaɪm/","攀爬","We [climbed] the hill."],["creep","crept","/kriːp/","悄悄爬行","The cat [crept] toward the bird."],["race","raced","/reɪs/","飞奔","The boys [raced] to the gate."],["wander","wandered","/ˈwɒndə(r)/","漫步","They [wandered] in the park."]],1),
+act:mk("act",[["carry","carried","/ˈkæri/","搬运","Mum [carried] the heavy bag."],["polish","polished","/ˈpɒlɪʃ/","擦亮","He [polished] his shoes."],["examine","examined","/ɪɡˈzæmɪn/","仔细检查","The doctor [examined] my arm."],["collect","collected","/kəˈlekt/","收集","She [collected] shells on the beach."],["lift","lifted","/lɪft/","举起","Dad [lifted] the box."],["repair","repaired","/rɪˈpeə(r)/","修理","Grandpa [repaired] my bike."]],1),
+say:mk("say",[["whisper","whispered","/ˈwɪspə(r)/","低声说","Lily [whispered] a secret to me."],["shout","shouted","/ʃaʊt/","大喊","The fans [shouted] loudly."],["explain","explained","/ɪkˈspleɪn/","解释","The teacher [explained] the rule."],["suggest","suggested","/səˈdʒest/","建议","Ravi [suggested] a new game."],["warn","warned","/wɔːn/","警告","Mum [warned] us about the ice."],["announce","announced","/əˈnaʊns/","宣布","The captain [announced] the winner."]],1)};
+const ALL=Object.values(W).flat(),fm=x=>x.past||x.w;
+const EM={owl:"🦉",dragon:"🐉",unicorn:"🦄",toad:"🐸",bat:"🦇",kitten:"🐱"};
+const CH=[["Leo","he","his","里奥","他","他的"],["Mia","she","her","米娅","她","她的"],["Ben","he","his","本","他","他的"],["Nina","she","her","妮娜","她","她的"],["Ravi","he","his","拉维","他","他的"],["Lily","she","her","莉莉","她","她的"]];
+const TIMES=["rainy morning","windy evening","sunny afternoon"],TEACH=["Hazel","Quill","Fern","Willow"];
+const TCN={"rainy morning":"下雨的早晨","windy evening":"刮风的傍晚","sunny afternoon":"阳光明媚的下午"};
+const CNS=[["一个{time}，{H}和{F}走进了{place}。","在那里，一只{desc}{creature}正守护着{obj}。","{H}感到{f1}，但{F}深吸了一口气。","两个朋友一步一步地朝{creature}{mv}过去。","{F}小心地{act}了{obj}。","“天黑前我们必须离开，”{F}{say}道。","{creature}看起来{f2}，然后让开了路。","很快，{obj}又安全了，{H}笑了。","那天晚上，{H}把{desc}{place}的事写进了{his}日记里。"],
+["在一个{time}，{T}教授交给{H}和{F}一项特别的任务。","他们得在{place}里找到{obj}。","{F}{say}道：“紧跟着我。”","{place}{descs}，{H}感到{f1}。","突然，一只{creature}从他们身边{mv}过去。","终于，他们找到了{obj}，{F}小心翼翼地{act}了它。","{creature}看着他们，显得{f2}。","他们回到教室时，{T}教授笑了。","{H}为整个团队感到自豪。"],
+["那是一个{time}，学校里很安静。","{H}和{F}去{place}寻找线索。","在角落里，他们看到了{desc}{obj}。","{H}感到{f1}，问道：“这是什么？”","{F}{act}了{obj}，说它是魔法物品。","然后一只{creature}{mv}进了房间。","“这很重要！”{F}{say}道。","{creature}看起来{f2}，于是他们分了一些食物给它。","谜团解开了，两个朋友去吃晚饭了。"]];
+const EXQ=[[["What was guarding {a_obj}?","{a_dc}",["{x1}","{x2}"],"第二句：There, {a_dc} was guarding {a_obj}.（有一只守护着它。）"],["Why did {F} take a deep breath?","To stay calm and brave.",["Because {F} wanted to sleep.","Because the {place} was too hot."],"第三句：{H} 感到 {f1}，而 {F} 深呼吸是为了保持冷静和勇敢。"],["What did the {creature} do after it looked {f2}?","It stepped aside.",["It flew to the moon.","It ate the {obj}."],"第七句：the {creature} looked {f2}, and then it stepped aside.（让开了路。）"],["What did {H} do that night?","{H} wrote about the {place} in {his} diary.",["{H} played football all night.","{H} cooked dinner for the {creature}."],"最后一句：That night, {H} wrote about the {place} in {his} diary.（写进日记。）"]],
+[["What special task did Professor {T} give them?","They had to find {a_obj} in the {place}.",["They had to clean the whole school.","They had to draw a picture of {y1}."],"第二句：They had to find {a_obj} in the {place}.（在那里找东西。）"],["Why did {F} say, \"Stay close to me\"?","To keep the team safe.",["Because {F} wanted to go home.","Because {F} was tired of walking."],"第三、四句：{place}很 {desc}，{F} 让大家靠近是为了保证团队安全。"],["What suddenly appeared?","{a_cr}",["{y1}","{y2}"],"第五句：Suddenly, {a_cr} {mv} past them.（突然出现。）"],["What did Professor {T} do when they returned to class?","Professor {T} smiled.",["Professor {T} shouted at them.","Professor {T} went to sleep."],"第八句：Professor {T} smiled when they returned to class.（笑了。）"]],
+[["Why did {H} and {F} go to the {place}?","To look for a clue.",["To watch a football game.","To buy some lunch."],"第二句：went to the {place} to look for a clue.（去找线索。）"],["What did they see in the corner?","{a_dobj}",["{z1}","{z2}"],"第三句：In the corner, they saw {a_dobj}.（在角落看到的。）"],["What did {F} say about the {obj}?","It was magic.",["It was broken.","It was a gift."],"第五句：{F} {act} the {obj} and said it was magic.（说它是魔法物品。）"],["What did they do after the {creature} seemed {f2}?","They shared some food with it.",["They ran away.","They closed the door."],"第八句：…seemed {f2}, so they shared some food.（分了食物。）"]]];
+const qDetail=(r,U)=>EXQ[U.si].map(([q,a,w,e])=>{const f=s=>s.replace(/\{(\w+)\}/g,(m,k)=>U.t[k]),A=cap(f(a));return{q:f(q),a:A,o:shuf(r,[A,...w.map(x=>cap(f(x)))]),e:f(e)}});
+const SK=[[`One {time}, {H} and {F} walked into the {place}.`,`There, {a_dc} was guarding {a_obj}.`,`{H} felt {f1}, but {F} took a deep breath.`,`The two friends {mv} toward the {creature}, step by step.`,`{F} {act} the {obj} carefully.`,`"We must leave before dark," {F} {say}.`,`The {creature} looked {f2}, and then it stepped aside.`,`Soon the {obj} was safe again, and {H} smiled.`,`That night, {H} wrote about the {desc} {place} in {his} diary.`],
+[`On a {time}, Professor {T} gave {H} and {F} a special task.`,`They had to find {a_obj} in the {place}.`,`{F} {say}, "Stay close to me."`,`The {place} was {desc}, and {H} felt {f1}.`,`Suddenly, {a_cr} {mv} past them.`,`At last, they found the {obj}, and {F} {act} it with great care.`,`The {creature} watched them and looked {f2}.`,`Professor {T} smiled when they returned to class.`,`{H} was proud of the whole team.`],
+[`It was a {time}, and the school was quiet.`,`{H} and {F} went to the {place} to look for a clue.`,`In the corner, they saw {a_dobj}.`,`{H} felt {f1} and asked, "What is it?"`,`{F} {act} the {obj} and said it was magic.`,`Then {a_cr} {mv} into the room.`,`"This is important!" {F} {say}.`,`The {creature} seemed {f2}, so they shared some food.`,`The mystery was solved, and the two friends went to dinner.`]];
+function rng(s){return()=>{s|=0;s=s+0x6D2B79F5|0;let t=Math.imul(s^s>>>15,1|s);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+function pick(r,a,n=1,ex=[]){const p=a.filter(x=>!ex.includes(x)),o=[];while(o.length<n&&p.length)o.push(p.splice(Math.floor(r()*p.length),1)[0]);return n===1?o[0]:o}
+function shuf(r,a){a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(r()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+const cap=s=>s[0].toUpperCase()+s.slice(1),art=s=>(/^[aeiou]/i.test(s)&&!/^uni/i.test(s)?"an ":"a ")+s;
+const UC={};
+function unit(u){if(UC[u])return UC[u];const r=rng(u*7919+101),[hc,fc]=pick(r,CH,2),f=pick(r,W.feel,2),d=pick(r,W.desc),ob=pick(r,W.obj),pl=pick(r,W.place),cr=pick(r,W.creature),mv=pick(r,W.move),ac=pick(r,W.act),sy=pick(r,W.say);
+const t={H:hc[0],F:fc[0],he:hc[1],his:hc[2],f1:f[0].w,f2:f[1].w,desc:d.w,obj:ob.w,place:pl.w,creature:cr.w,mv:mv.past,act:ac.past,say:sy.past,time:pick(r,TIMES),T:pick(r,TEACH),a_dc:art(d.w+" "+cr.w),a_obj:art(ob.w),a_cr:art(cr.w),a_dobj:art(d.w+" "+ob.w)};
+const sk=pick(r,SK),si=SK.indexOf(sk);const story=sk.map(s=>cap(s.replace(/\{(\w+)\}/g,(m,k)=>t[k])).replace(/^"(\w)/,(m,c)=>'"'+c.toUpperCase()));
+const c2=pick(r,W.creature,2,[cr]),d2=pick(r,W.desc,2,[d]);Object.assign(t,{x1:art(d.w+" "+c2[0].w),x2:art(d.w+" "+c2[1].w),y1:art(c2[0].w),y2:art(c2[1].w),z1:art(d2[0].w+" "+ob.w),z2:art(d2[1].w+" "+ob.w)});const tc={H:hc[3],F:fc[3],he:hc[4],his:hc[5],f1:f[0].cn.replace(/的$/,""),f2:f[1].cn.replace(/的$/,""),desc:d.cn,descs:d.cn.replace(/的$/,""),obj:ob.cn,place:pl.cn,creature:cr.cn,mv:mv.cn,act:ac.cn,say:sy.cn,time:TCN[t.time],T:{Hazel:"黑泽尔",Quill:"奎尔",Fern:"芬恩",Willow:"威洛"}[t.T]};
+return UC[u]={t,si,cn:CNS[si].map(s=>s.replace(/\{(\w+)\}/g,(m,k)=>tc[k])),story,ws:[f[0],f[1],d,ob,pl,cr,mv,ac,sy],verbs:[mv,ac,sy],cr:cr.w,title:`The ${cap(d.w)} ${cap(pl.w)}`,plain:story.filter(s=>!s.includes('"'))}}
+const qRead=(r,U)=>{const f=U.ws[0],c=U.ws[5],x=pick(r,U.ws),y=pick(r,U.ws,1,[x]);return[
+{q:"What kind of creature is in the story?",a:c.w,o:shuf(r,[c.w,...pick(r,W.creature,2,[c]).map(y=>y.w)])},
+{q:`How did ${U.t.H} feel in the story?`,a:f.w,o:shuf(r,[f.w,...pick(r,W.feel,2,[f,U.ws[1]]).map(y=>y.w)])},
+{q:`What does "${x.w}" mean?`,a:x.cn,o:shuf(r,[x.cn,...pick(r,ALL,2,[x]).map(y=>y.cn)])},
+{q:`Who felt ${U.t.f1} in the story?`,a:U.t.H,o:shuf(r,[U.t.H,...pick(r,CH.map(c=>c[0]),2,[U.t.H,U.t.F])])},
+{q:"Where does the story take place?",a:U.t.place,o:shuf(r,[U.t.place,...pick(r,W.place,2,[U.ws[4]]).map(y=>y.w)])},
+{q:"Which object is in the story?",a:U.t.obj,o:shuf(r,[U.t.obj,...pick(r,W.obj,2,[U.ws[3]]).map(y=>y.w)])},
+{q:`How did the ${U.cr} look or seem?`,a:U.t.f2,o:shuf(r,[U.t.f2,...pick(r,W.feel,2,[f,U.ws[1]]).map(y=>y.w)])},
+{q:`Which word means "${y.cn}"?`,a:y.w,o:shuf(r,[y.w,...pick(r,ALL,2,[y]).map(z=>z.w)])}]};
+const qCloze=(r,U)=>{const x=pick(r,U.ws);return{q:x.ex.replace(/\[(.+?)\]/,"____"),a:fm(x),o:shuf(r,[fm(x),...pick(r,W[x.cat],2,[x]).map(fm)])}};
+const qCN=(r,U)=>{const x=pick(r,U.ws);return{q:`Which English word means “${x.cn}”?`,a:x.w,o:shuf(r,[x.w,...pick(r,ALL,2,[x]).map(y=>y.w)])}};
+/*UI*/
+const $=id=>document.getElementById(id),S={page:1,pts:0,seen:new Set([1]),done:new Set()};let CUR=[];
+function save(){try{localStorage.setItem(KEY,JSON.stringify({page:S.page,pts:S.pts,seen:[...S.seen],done:[...S.done]}))}catch(e){}}
+function load(){try{const o=JSON.parse(localStorage.getItem(KEY)||"{}");if(o.page>=1&&o.page<=10000)S.page=o.page;S.pts=o.pts||0;S.seen=new Set(o.seen||[S.page]);S.done=new Set(o.done||[])}catch(e){}}
+function updTop(){$("pointsDisplay").textContent=`🏆 学院积分：${S.pts} 分`;$("progressDisplay").textContent=`📖 已读页数：${S.seen.size} / 10000 页`}
+function award(k,n){if(S.done.has(k))return"";S.done.add(k);S.pts+=n;save();updTop();return`（+${n} 学院积分）`}
+function speak(t){if(!("speechSynthesis"in window))return;speechSynthesis.cancel();const s=new SpeechSynthesisUtterance(t);s.lang="en-US";s.rate=parseFloat($("voiceRate").value)||.9;speechSynthesis.speak(s)}
+const hl=(t,U)=>U.ws.reduce((o,w)=>o.replace(new RegExp(`\\b(${fm(w)})\\b`,"gi"),`<span class="vocab-word" data-say="$1" title="点击朗读">$1</span>`),t);
+const quizH=items=>items.map((it,i)=>`<div class="quiz-card" data-qi="${i}"><div class="quiz-q">🕵️ ${i+1}. ${it.q}</div><div class="options-list">${it.o.map(o=>`<button class="opt-btn" data-v="${o}">${o}</button>`).join("")}</div><div class="feedback-box"></div></div>`).join("");
+const bldH=(r,s,i)=>`<div class="quiz-card bld" data-bi="${i}" data-sel="[]" data-ans="${s}"><div class="quiz-q">⚡ 点击词块，拼出正确的句子</div><div class="word-pool">${shuf(r,s.split(" ")).map(w=>`<button class="word-chip" data-w="${w}">${w}</button>`).join("")}</div><div class="bdisp" style="font-weight:700;color:var(--sapphire)">已选：</div><div style="display:flex;gap:8px;margin-top:8px"><button class="btn btn-small btn-ghost bclr" style="color:var(--ink);border-color:var(--border)">清空重拼</button><button class="btn btn-small bchk">校验魔咒</button></div><div class="feedback-box"></div></div>`;
+const inH=(label,ans,say,i)=>`<div class="quiz-card" data-ti="${i}"><div class="quiz-q">${label}</div>${say?`<button class="btn btn-small" data-say="${say}">🔊 听句子</button> `:""}<input class="ti" data-ans="${ans}" style="padding:7px 10px;border:1px solid var(--border);border-radius:8px;min-width:240px" placeholder="在这里输入"> <button class="btn btn-small tchk">校验</button><div class="feedback-box"></div></div>`;
+function render(){const p=S.page,u=Math.floor((p-1)/10),k=(p-1)%10,v=Math.floor(u/100),U=unit(u),r=rng(p*31+7);S.seen.add(p);save();updTop();CUR=[];let body="";
+if(k<3){CUR=[qCloze(r,U),qCN(r,U)];const ss=U.story.slice(k*3,k*3+3),txt=ss.join(" "),ws=U.ws.filter(w=>txt.toLowerCase().includes(fm(w).toLowerCase()));
+body=`<div class="story-box"><div class="story-toolbar"><strong style="color:var(--crimson)">📜 魔法故事（点击高亮生词听发音）</strong><button class="btn btn-small" data-say="${txt.replace(/"/g,"&quot;")}">🔊 朗读本页</button></div><p class="story-en">${hl(txt,U)}</p><button class="btn btn-small btn-ghost" style="color:var(--ink);border-color:var(--border)" data-cn="1">显示/隐藏中文翻译</button><div class="story-cn" style="display:none;margin-top:8px">🇨🇳 ${U.cn.slice(k*3,k*3+3).join("")}</div></div><div style="font-weight:700;color:var(--crimson);margin:10px 0">🪄 本页生词</div><div class="vocab-grid">${ws.map(w=>`<div class="flip-card revealed" data-say="${w.w}" title="点击朗读"><div class="vocab-top"><span class="vocab-term">${w.w}</span><span class="vocab-phonetic">${w.ipa}</span></div><div class="vocab-meaning">${w.cn}</div></div>`).join("")}</div><div style="font-weight:700;color:var(--crimson);margin:10px 0">🧪 小测验</div>`+quizH(CUR)}
+else if(k==3){CUR=[qCN(r,U),qCN(r,U),qCloze(r,U)];body=`<div class="vocab-grid">${U.ws.map((w,i)=>`<div class="flip-card" data-ci="${i}"><div class="vocab-top"><span class="vocab-term">${w.w}${w.past?" → "+w.past:""}</span><span class="vocab-phonetic">${w.ipa}</span></div><div class="vocab-example">“${w.ex.replace(/[\[\]]/g,"")}”</div><div class="vocab-meaning">中文释义：${w.cn}（点击卡片显示/朗读）</div></div>`).join("")}</div><div style="font-weight:700;color:var(--crimson);margin:10px 0">🧪 小测验</div>`+quizH(CUR)}
+else if(k==4){CUR=[...qDetail(r,U),...qRead(r,U)];body=`<div class="story-box"><div class="story-toolbar"><strong style="color:var(--crimson)">📖 先读故事，再回答 12 个问题（每题 +15 分）</strong><button class="btn btn-small" data-say="${U.story.join(" ").replace(/"/g,"&quot;")}">🔊 朗读全文</button></div><p class="story-en">${hl(U.story.join(" "),U)}</p></div>`+quizH(CUR)}
+else if(k==5)body=U.plain.slice(0,4).map((s,i)=>bldH(r,s,i)).join("");
+else if(k==6)body=`<div class="story-box"><p class="story-en">📘 动词变过去式：多数加 -ed（polish→polished）；辅音+y 结尾，把 y 变 i 再加 -ed（hurry→hurried）；有些是不规则变化（creep→crept）。</p></div>`+U.verbs.map((w,i)=>inH(`Past tense of <b>${w.w}</b> (${w.cn}) →`,w.past,"",i)).join("")+U.verbs.map((w,i)=>inH(w.ex.replace(/\[.+?\]/,"____")+`（填入 <b>${w.w}</b> 的过去式）`,w.past,"",i+3)).join("");
+else if(k==7){CUR=[1,2,3,4,5,6].map(()=>qCloze(r,U));body=quizH(CUR)}
+else if(k==8)body=U.plain.slice(-4).map((s,i)=>inH("🎧 听写：听句子，把它完整写出来",s,s,i)).join("");
+else{CUR=[qCN(r,U),qCN(r,U),qCN(r,U),qCloze(r,U),qCloze(r,U),qRead(r,U)[1],...qDetail(r,U).slice(0,2)];body=`<div class="story-box"><p class="story-en">🏆 Boss 挑战：答对全部题目，领取单元奖励！</p></div>`+quizH(CUR)}
+$("bookStage").innerHTML=`<div><div class="page-header"><div><div class="page-kicker">${VOL[v]} · Unit ${u+1} · ${MODES[k]}</div><div class="page-title">${U.title}</div></div><div class="page-num-box"><div>第 <strong>${p}</strong> / 10000 页</div><div style="color:var(--ink-muted)">单元第 ${k+1} / 10 页</div></div></div><div class="illustration-card" style="text-align:center;font-size:54px;padding:12px">${EM[U.cr]} ✨ 🏰</div>${body}</div><div class="book-footer"><div style="display:flex;gap:10px"><button class="btn" data-go="${p-1}" ${p<=1?"disabled":""}>← 上一页</button><button class="btn" data-go="${p+1}" ${p>=10000?"disabled":""}>下一页 →</button></div><div class="note-box">全书 10000 页（10 卷 · 1000 个单元，每单元一篇原创小故事 + 10 页训练），支持朗读与自动存档。</div></div>`;sidebar(u,k,v)}
+function sidebar(u,k,v){$("yearSelect").innerHTML=VOL.map((n,i)=>`<option value="${i}" ${i==v?"selected":""}>${n}（P.${i*1000+1}–${i*1000+1000}）</option>`).join("");
+$("unitList").innerHTML=Array.from({length:100},(_,i)=>{const n=v*100+i;return`<button class="unit-item ${n==u?"active":""}" data-go="${n*10+1}"><span>Unit ${n+1}: ${unit(n).title}</span><span class="pages-tag">P.${n*10+1}</span></button>`}).join("");
+$("pageJumpGrid").innerHTML=Array.from({length:10},(_,i)=>`<button class="page-dot-btn ${i==k?"active":""}" data-go="${u*10+i+1}">P.${u*10+i+1}</button>`).join("")+`<div style="grid-column:1/-1;display:flex;gap:6px;margin-top:6px"><input id="jumpIn" type="number" min="1" max="10000" placeholder="跳到第N页" style="flex:1;padding:5px;border:1px solid var(--border);border-radius:6px"><button class="btn btn-small" id="jumpBtn">跳转</button></div>`;
+const a=document.querySelector(".unit-item.active");if(a)a.scrollIntoView({block:"nearest"})}
+function go(n){n=parseInt(n,10);if(n>=1&&n<=10000){S.page=n;render();scrollTo({top:0,behavior:"smooth"})}}
+const norm=s=>s.toLowerCase().replace(/[^a-z ]/g,"").replace(/\s+/g," ").trim();
+document.addEventListener("click",e=>{const t=e.target.closest("button,.flip-card,.vocab-word");if(!t)return;
+if(t.id=="jumpBtn")return go($("jumpIn").value);
+if(t.dataset.cn){const b=document.querySelector(".story-cn");b.style.display=b.style.display=="none"?"block":"none";return}
+if(t.dataset.go)return go(t.dataset.go);
+if(t.dataset.say&&!t.matches(".flip-card"))return speak(t.dataset.say);
+if(t.matches(".flip-card")){if(t.dataset.say){speak(t.dataset.say);award(`s${S.page}_${t.dataset.say}`,5);return}t.classList.toggle("revealed");if(t.dataset.ci!=null){speak(unit(Math.floor((S.page-1)/10)).ws[t.dataset.ci].w);award(`v${S.page}_${t.dataset.ci}`,5)}return}
+const c=t.closest(".quiz-card");if(!c)return;const fb=c.querySelector(".feedback-box");
+if(t.matches(".opt-btn")){const it=CUR[c.dataset.qi],ok=t.dataset.v==it.a;c.querySelectorAll(".opt-btn").forEach(b=>b.classList.remove("correct","wrong"));t.classList.add(ok?"correct":"wrong");fb.className="feedback-box show "+(ok?"ok":"no");fb.textContent=ok?`✅ 答对啦！${award(`q${S.page}_${c.dataset.qi}`,15)} ${it.e?"解析："+it.e:""}`:`❌ 再想一想！${it.e?"提示："+it.e:""}`}
+else if(t.matches(".word-chip")){if(t.disabled)return;t.disabled=true;t.style.opacity=.4;const s=JSON.parse(c.dataset.sel);s.push(t.dataset.w);c.dataset.sel=JSON.stringify(s);c.querySelector(".bdisp").textContent="已选："+s.join(" ");speak(t.dataset.w)}
+else if(t.matches(".bclr")){c.dataset.sel="[]";c.querySelector(".bdisp").textContent="已选：";c.querySelectorAll(".word-chip").forEach(b=>{b.disabled=false;b.style.opacity=1});fb.className="feedback-box"}
+else if(t.matches(".bchk")){const ok=JSON.parse(c.dataset.sel).join(" ")==c.dataset.ans;fb.className="feedback-box show "+(ok?"ok":"no");fb.textContent=ok?`⚡ 拼写成功！${award(`b${S.page}_${c.dataset.bi}`,20)} ${c.dataset.ans}`:`🪄 差一点！参考：${c.dataset.ans}`}
+else if(t.matches(".tchk")){const i=c.querySelector(".ti"),ok=norm(i.value)==norm(i.dataset.ans);fb.className="feedback-box show "+(ok?"ok":"no");fb.textContent=ok?`✅ 正确！${award(`t${S.page}_${c.dataset.ti}`,15)}`:`❌ 正确答案：${i.dataset.ans}`}});
+$("yearSelect").addEventListener("change",e=>go(e.target.value*1000+1));
+$("resetProgressBtn").addEventListener("click",()=>{S.page=1;S.pts=0;S.seen=new Set([1]);S.done=new Set();try{localStorage.removeItem(KEY)}catch(e){}render()});
+load();render();
+
+</script>
+</body>
+</html>
