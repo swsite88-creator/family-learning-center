@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>霍格沃茨密令：魔法特工与进阶英语学院 · 5000页完全版</title>
+  <style>
+    :root {
+      --bg-main: #0b1021;
+      --bg-card: #131b36;
+      --bg-card-soft: #1a2447;
+      --bg-pill: #222f5b;
+      --accent-gold: #f5c451;
+      --accent-gold-soft: rgba(245, 196, 81, 0.16);
+      --accent-purple: #8b6eff;
+      --accent-cyan: #38bdf8;
+      --accent-green: #34d399;
+      --accent-red: #fb7185;
+      --text-main: #f3f6ff;
+      --text-muted: #a6b2d6;
+      --border-subtle: rgba(255, 255, 255, 0.1);
+      --shadow-card: 0 14px 34px rgba(3, 7, 20, 0.45);
+      --radius-lg: 18px;
+      --radius-md: 12px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background: radial-gradient(circle at 15% 12%, rgba(139, 110, 255, 0.18), transparent 36%),
+                  radial-gradient(circle at 85% 18%, rgba(56, 189, 248, 0.14), transparent 34%),
+                  var(--bg-main);
+      color: var(--text-main);
+      line-height: 1.65;
+      min-height: 100vh;
+      padding-bottom: 56px;
+    }
+    header {
+      position: sticky; top: 0; z-index: 30;
+      backdrop-filter: blur(12px);
+      background: rgba(11, 16, 33, 0.88);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto; padding: 14px 20px;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+    }
+    .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--text-main); font-weight: 700; font-size: 16px; }
+    .brand-icon {
+      width: 34px; height: 34px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent-gold), #f59e0b);
+      color: #171204; display: inline-flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+    .stat-chip {
+      background: var(--bg-card-soft); border: 1px solid var(--border-subtle);
+      padding: 6px 12px; border-radius: 999px; font-size: 13px; color: var(--accent-gold); font-weight: 600;
+    }
+    .nav-link {
+      text-decoration: none; color: var(--text-muted); background: var(--bg-card);
+      border: 1px solid var(--border-subtle); padding: 6px 14px; border-radius: 999px; font-size: 13px;
+    }
+    main { max-width: 1100px; margin: 0 auto; padding: 24px 20px 0; }
+    .hero {
+      background: linear-gradient(135deg, rgba(26, 36, 71, 0.96), rgba(19, 27, 54, 0.98));
+      border: 1px solid rgba(245, 196, 81, 0.28); border-radius: var(--radius-lg);
+      padding: 22px; box-shadow: var(--shadow-card); margin-bottom: 20px;
+    }
+    .hero-tag {
+      display: inline-block; font-size: 12px; letter-spacing: 0.08em; color: var(--accent-gold);
+      background: var(--accent-gold-soft); padding: 4px 10px; border-radius: 999px; font-weight: 700; margin-bottom: 8px;
+    }
+    .hero h1 { font-size: clamp(21px, 3vw, 28px); margin-bottom: 6px; }
+    .hero p { color: var(--text-muted); font-size: 14px; }
+    .hero-controls { margin-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+    .btn {
+      border: 1px solid var(--border-subtle); background: var(--bg-pill); color: var(--text-main);
+      padding: 8px 14px; border-radius: 10px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+      display: inline-flex; align-items: center; gap: 6px; transition: 0.15s;
+    }
+    .btn:hover:not(:disabled) { border-color: var(--accent-cyan); transform: translateY(-1px); }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-gold { background: linear-gradient(135deg, var(--accent-gold), #eab308); color: #161103; border: none; }
+    .btn-sm { padding: 6px 11px; font-size: 12.5px; border-radius: 8px; }
+
+    /* 5000页导航控制条 */
+    .pager-bar {
+      background: var(--bg-card); border: 1px solid rgba(56, 189, 248, 0.3);
+      border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 18px;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px;
+    }
+    .pager-group { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .page-input {
+      width: 96px; background: var(--bg-main); border: 1px solid var(--border-subtle);
+      color: var(--accent-gold); font-weight: 700; padding: 7px 10px; border-radius: 8px; text-align: center; font-size: 14px;
+    }
+    .volume-select {
+      background: var(--bg-main); border: 1px solid var(--border-subtle);
+      color: var(--text-main); padding: 7px 10px; border-radius: 8px; font-size: 13.5px;
+    }
+
+    .mode-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+    .mode-tab {
+      background: var(--bg-card); border: 1px solid var(--border-subtle); color: var(--text-muted);
+      padding: 9px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600; cursor: pointer;
+    }
+    .mode-tab.active { background: var(--accent-gold); color: #161103; border-color: var(--accent-gold); }
+
+    .panel {
+      background: var(--bg-card); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg); padding: 22px; box-shadow: var(--shadow-card);
+    }
+    .panel-header {
+      display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap;
+      padding-bottom: 14px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 18px;
+    }
+    .mission-badge {
+      background: rgba(139, 110, 255, 0.18); border: 1px solid rgba(139, 110, 255, 0.45);
+      color: #d8ceff; padding: 6px 12px; border-radius: 10px; font-size: 13px;
+    }
+    .story-line {
+      background: var(--bg-card-soft); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 14px 16px; margin-bottom: 12px;
+    }
+    .story-en { font-size: 17px; font-weight: 600; color: #fff; margin-bottom: 6px; }
+    .story-en mark { background: rgba(245, 196, 81, 0.24); color: var(--accent-gold); padding: 1px 5px; border-radius: 5px; }
+    .story-cn { font-size: 14px; color: var(--text-muted); margin-bottom: 10px; }
+    .story-cn.hidden { display: none; }
+
+    .vocab-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(285px, 1fr)); gap: 14px; }
+    .vocab-card {
+      background: var(--bg-card-soft); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 15px; display: flex; flex-direction: column; gap: 8px;
+    }
+    .vocab-word { font-size: 20px; font-weight: 800; color: var(--accent-gold); }
+    .vocab-phonetic { font-size: 13px; color: var(--accent-cyan); font-family: monospace; }
+    .pro-upgrade-box {
+      background: rgba(11, 16, 33, 0.65); border-left: 3px solid var(--accent-purple);
+      padding: 9px 11px; border-radius: 8px; font-size: 13px;
+    }
+    .basic-txt { color: var(--text-muted); text-decoration: line-through; display: block; margin-bottom: 3px; }
+    .pro-txt { color: var(--accent-green); font-weight: 600; display: block; }
+
+    .quiz-card {
+      background: var(--bg-card-soft); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 16px; margin-bottom: 14px;
+    }
+    .quiz-tag { font-size: 12px; color: var(--accent-cyan); font-weight: 700; margin-bottom: 5px; }
+    .quiz-q { font-size: 16px; font-weight: 600; margin-bottom: 12px; }
+    .quiz-options { display: grid; gap: 9px; }
+    .opt-btn {
+      text-align: left; background: rgba(11, 16, 33, 0.75); border: 1px solid var(--border-subtle);
+      color: var(--text-main); padding: 11px 14px; border-radius: 10px; font-size: 14.5px; cursor: pointer;
+    }
+    .opt-btn.correct { border-color: var(--accent-green); background: rgba(52, 211, 153, 0.16); color: #d1fae5; }
+    .opt-btn.wrong { border-color: var(--accent-red); background: rgba(251, 113, 133, 0.16); color: #ffe4e6; }
+    .feedback-box { margin-top: 10px; padding: 10px 12px; border-radius: 8px; font-size: 13.5px; display: none; }
+    .feedback-box.show { display: block; }
+    .feedback-box.ok { background: rgba(52, 211, 153, 0.14); border: 1px solid rgba(52, 211, 153, 0.45); color: #a7f3d0; }
+    .feedback-box.err { background: rgba(251, 113, 133, 0.14); border: 1px solid rgba(251, 113, 133, 0.45); color: #fecdd3; }
+
+    .sentence-slot {
+      min-height: 52px; background: rgba(11, 16, 33, 0.78); border: 1px dashed rgba(245, 196, 81, 0.45);
+      border-radius: 10px; padding: 10px; display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; align-items: center;
+    }
+    .token-pool { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .token-btn {
+      background: var(--bg-pill); border: 1px solid var(--border-subtle); color: var(--text-main);
+      padding: 7px 12px; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+    }
+    .token-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    .qa-card {
+      background: var(--bg-card-soft); border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md); padding: 16px; margin-bottom: 12px;
+    }
+    .qa-input {
+      width: 100%; background: rgba(11, 16, 33, 0.8); border: 1px solid var(--border-subtle);
+      border-radius: 8px; padding: 10px 12px; color: var(--text-main); font-size: 14px; margin: 10px 0;
+    }
+    .qa-model {
+      display: none; background: rgba(56, 189, 248, 0.12); border: 1px solid rgba(56, 189, 248, 0.35);
+      border-radius: 8px; padding: 10px 12px; margin-top: 10px; font-size: 14px;
+    }
+    .qa-model.show { display: block; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-inner">
+      <a class="brand" href="./magic-series.html">
+        <span class="brand-icon">🕵️</span>
+        <span>魔法书架 · 第 3 本（5000页完全版）</span>
+      </a>
+      <div class="nav-actions">
+        <span class="stat-chip" id="pageIndicator">📄 第 1 / 5000 页</span>
+        <span class="stat-chip" id="xpBadge">⚡ 0 XP</span>
+        <span class="stat-chip" id="doneCountBadge">✅ 已完成 0 页</span>
+        <a class="nav-link" href="./magic-series.html">← 返回书架</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <span class="hero-tag">BOOK 3 · 5,000 INTERACTIVE PAGES · PRO ENGLISH FOR GRADE 4</span>
+      <h1>霍格沃茨密令：魔法特工与进阶英语学院（5000 页完全版）</h1>
+      <p>
+        5 大主线篇章 × 5,000 页动态组合关卡：每页自动搭配不同的特工任务情境、精准进阶词汇（Basic → Pro 升级）、语境选择题、咒语拼句与特工问答。支持跳页、分卷直达与本机进度自动保存。
+      </p>
+      <div class="hero-controls">
+        <button class="btn btn-gold" id="toggleCnBtn">🙈 隐藏中文释义</button>
+        <button class="btn" id="rateBtn">⚡ 语速：正常 (1.0x)</button>
+        <button class="btn" id="stopSpeechBtn">⏹️ 停止朗读</button>
+        <button class="btn" id="randomPageBtn">🎲 随机挑战一页</button>
+        <button class="btn" id="resetProgressBtn">↺ 重置进度</button>
+      </div>
+    </section>
+
+    <section class="pager-bar">
+      <div class="pager-group">
+        <button class="btn btn-sm" id="prevPageBtn">← 上一页</button>
+        <span>第</span>
+        <input type="number" id="pageJumpInput" class="page-input" min="1" max="5000" value="1" />
+        <span>/ 5000 页</span>
+        <button class="btn btn-sm btn-gold" id="goPageBtn">跳转</button>
+        <button class="btn btn-sm" id="nextPageBtn">下一页 →</button>
+      </div>
+      <div class="pager-group">
+        <label for="volumeSelect" style="font-size:13px;color:var(--text-muted);">快速选卷：</label>
+        <select id="volumeSelect" class="volume-select">
+          <option value="1">第 1 卷（1–1000页）：午夜猫头鹰与加密羊皮纸</option>
+          <option value="1001">第 2 卷（1001–2000页）：禁书区里的会说话画像</option>
+          <option value="2001">第 3 卷（2001–3000页）：变形术实验室的失控药水</option>
+          <option value="3001">第 4 卷（3001–4000页）：魁地奇风暴与战术板</option>
+          <option value="4001">第 5 卷（4001–5000页）：钟楼密室的终极谜题</option>
+        </select>
+      </div>
+    </section>
+
+    <nav class="mode-tabs" id="modeTabs">
+      <button class="mode-tab active" data-mode="story">📖 1. 本页密令故事与听读</button>
+      <button class="mode-tab" data-mode="vocab">💎 2. 进阶词汇升级库</button>
+      <button class="mode-tab" data-mode="quiz">🎯 3. 趣味情景闯关</button>
+      <button class="mode-tab" data-mode="builder">🧩 4. 咒语拼句工坊</button>
+      <button class="mode-tab" data-mode="qa">🎙️ 5. 特工问答挑战</button>
+    </nav>
+
+    <section class="panel" id="learningPanel"></section>
+  </main>
+
+  <script>
+    const TOTAL_PAGES = 5000;
+
+    // 5大篇章核心词库与句型（前5页为精编主线，第6~5000页由确定性组合引擎生成不重复页面）
+    const CHAPTER_THEMES = [
+      {
+        vol: 1,
+        titleCn: "午夜猫头鹰与加密羊皮纸",
+        titleEn: "The Midnight Owl & The Coded Scroll",
+        badge: "银羽密探",
+        mission: "破译凌晨密信，精准描述观察与侦查动作",
+        vocab: [
+          { word: "investigate", phonetic: "/ɪnˈvestɪɡeɪt/", pos: "v.", meaning: "调查、查明", basic: "I look for the missing map.", pro: "I investigate the missing map carefully.", example: "Young agents investigate every clue in the tower." },
+          { word: "whisper", phonetic: "/ˈwɪspə(r)/", pos: "v.", meaning: "低语、悄悄说", basic: "She said a secret quietly.", pro: "She whispered a secret into my ear.", example: "We must whisper near the sleeping portrait." },
+          { word: "clue", phonetic: "/kluː/", pos: "n.", meaning: "线索、提示", basic: "We found a good sign.", pro: "We found a key clue to the mystery.", example: "A silver feather is our first clue." },
+          { word: "vanish", phonetic: "/ˈvænɪʃ/", pos: "v.", meaning: "突然消失", basic: "The shadow went away fast.", pro: "The shadow vanished into thin air.", example: "Glowing ink can vanish in cold air." },
+          { word: "confirm", phonetic: "/kənˈfɜːm/", pos: "v.", meaning: "证实、确认", basic: "This makes sure the time is right.", pro: "This confirms that the lock was opened.", example: "Please confirm the secret password first." }
+        ],
+        coreStory: [
+          { en: "At midnight, a silver-badged owl dropped a coded scroll on the stone sill.", cn: "午夜时分，一只佩戴银徽章的猫头鹰把加密羊皮纸丢在石窗台上。" },
+          { en: "Agent Leo decided to <mark>investigate</mark> the glowing marks instead of guessing.", cn: "特工里奥决定调查发光的记号，而不是盲目猜测。" },
+          { en: "The owl <mark>whispered</mark> a warning and vanished into thin air.", cn: "猫头鹰低声发出警告，随后凭空消失。" },
+          { en: "A tiny brass key gave the first <mark>clue</mark> and <mark>confirmed</mark> their route.", cn: "一枚小黄铜钥匙提供了第一条线索，并证实了他们的路线。" }
+        ],
+        builder: {
+          prompt: "拼出特工汇报：“我会仔细调查那个奇怪的线索。”",
+          tokens: ["I", "will", "investigate", "that", "strange", "clue", "carefully."],
+          answer: "I will investigate that strange clue carefully."
+        },
+        qa: [
+          { prompt: "快问 1：用 whisper 造一句“我们在图书馆里必须低声说话”。", tip: "We must whisper...", model: "We must whisper when we are inside the library." },
+          { prompt: "快问 2：用 confirm 造一句“这证实了我们的计划有效”。", tip: "This confirms that...", model: "This confirms that our secret plan works." }
+        ]
+      },
+      {
+        vol: 2,
+        titleCn: "禁书区里的会说话画像",
+        titleEn: "The Talking Portrait in the Restricted Section",
+        badge: "禁书说客",
+        mission: "用礼貌且有逻辑的英语说服古老画像",
+        vocab: [
+          { word: "persuade", phonetic: "/pəˈsweɪd/", pos: "v.", meaning: "说服、劝服", basic: "I made him agree with me.", pro: "I persuaded him to share the password.", example: "Clear facts persuade people faster than shouting." },
+          { word: "hesitate", phonetic: "/ˈhezɪteɪt/", pos: "v.", meaning: "犹豫、迟疑", basic: "Don't stop and wait too long.", pro: "Don't hesitate when you see the right door.", example: "Never hesitate to ask a smart question." },
+          { word: "ancient", phonetic: "/ˈeɪnʃənt/", pos: "adj.", meaning: "古老的、远古的", basic: "This book is very, very old.", pro: "This is an ancient book from old Hogwarts.", example: "Ancient spells follow strict rules." },
+          { word: "obvious", phonetic: "/ˈɒbviəs/", pos: "adj.", meaning: "明显的、显而易见的", basic: "Everyone can see the mark.", pro: "It is obvious that someone touched the lock.", example: "There is an obvious scratch on the frame." },
+          { word: "otherwise", phonetic: "/ˈʌðəwaɪz/", pos: "adv./conj.", meaning: "否则、不然", basic: "Hurry up, or we miss it.", pro: "Hurry up; otherwise, the gate will close.", example: "Write down the code; otherwise, you forget it." }
+        ],
+        coreStory: [
+          { en: "Behind the iron gate hung an <mark>ancient</mark> portrait with a suspicious frown.", cn: "铁门后挂着一幅古老的画像，正满脸怀疑地皱着眉。" },
+          { en: "It was <mark>obvious</mark> that the wizard knew the secret route.", cn: "很明显这位巫师知道那条秘密路线。" },
+          { en: "Leo used calm logic to <mark>persuade</mark> him not to <mark>hesitate</mark>.", cn: "里奥用冷静的逻辑说服他不要犹豫。" },
+          { en: "Speak clearly; <mark>otherwise</mark>, the silver lock stays sealed.", cn: "清楚地说出来；否则，银锁会一直紧闭。" }
+        ],
+        builder: {
+          prompt: "拼出句子：“很明显，这幅古老的画像知道答案。”",
+          tokens: ["It", "is", "obvious", "that", "this", "ancient", "portrait", "knows", "the", "answer."],
+          answer: "It is obvious that this ancient portrait knows the answer."
+        },
+        qa: [
+          { prompt: "快问 1：用 persuade 造一句“我们说服了守卫打开门”。", tip: "We persuaded the guard...", model: "We persuaded the guard to open the secret gate." },
+          { prompt: "快问 2：用 otherwise 造一句“仔细听，否则你会错过线索”。", tip: "Listen carefully; otherwise...", model: "Listen carefully; otherwise, you will miss the clue." }
+        ]
+      },
+      {
+        vol: 3,
+        titleCn: "变形术实验室的失控药水",
+        titleEn: "The Unstable Potion in Transfiguration Lab",
+        badge: "稳压炼金师",
+        mission: "按科学步骤描述状态变化与预防动作",
+        vocab: [
+          { word: "react", phonetic: "/riˈækt/", pos: "v.", meaning: "起反应、回应", basic: "The potion changed in the heat.", pro: "The potion reacted quickly to warm light.", example: "How does silver powder react with cold water?" },
+          { word: "fragile", phonetic: "/ˈfrædʒaɪl/", pos: "adj.", meaning: "易碎的、脆弱的", basic: "This glass bottle breaks easily.", pro: "This glass flask is fragile; hold it gently.", example: "Fragile vials stay inside padded wooden boxes." },
+          { word: "precisely", phonetic: "/prɪˈsaɪsli/", pos: "adv.", meaning: "精确地、恰好", basic: "Add three drops, exact number.", pro: "Add precisely three drops of blue mist.", example: "The bell rings at precisely midnight." },
+          { word: "prevent", phonetic: "/prɪˈvent/", pos: "v.", meaning: "阻止、防止", basic: "Put a lid so it won't spill.", pro: "Put a lid on to prevent the potion from spilling.", example: "Cool air prevents the mixture from boiling over." },
+          { word: "remain", phonetic: "/rɪˈmeɪn/", pos: "v.", meaning: "保持、仍然是", basic: "The water stayed calm.", pro: "The liquid remained calm and clear.", example: "Please remain quiet during the lab test." }
+        ],
+        coreStory: [
+          { en: "Silver bubbles began to <mark>react</mark> wildly inside the <mark>fragile</mark> glass flask.", cn: "易碎的玻璃烧瓶里，银色气泡开始剧烈反应。" },
+          { en: "Leo added <mark>precisely</mark> three drops of blue mist to cool it down.", cn: "里奥精准滴入三滴蓝雾来给它降温。" },
+          { en: "That step helped <mark>prevent</mark> the potion from overflowing.", cn: "那一步成功防止了药水溢出。" },
+          { en: "Soon the mixture <mark>remained</mark> calm and bright like starlight.", cn: "很快混合液保持了星光般的平静与清澈。" }
+        ],
+        builder: {
+          prompt: "拼出安全提示：“我们必须防止药水沸腾。”",
+          tokens: ["We", "must", "prevent", "the", "potion", "from", "boiling."],
+          answer: "We must prevent the potion from boiling."
+        },
+        qa: [
+          { prompt: "快问 1：用 prevent ... from ... 造一句“盖子能防止水溅出来”。", tip: "The lid prevents water...", model: "The lid prevents water from splashing out." },
+          { prompt: "快问 2：用 remain 造一句“在风暴中保持冷静”。", tip: "Remain calm...", model: "Remain calm even when the storm arrives." }
+        ]
+      },
+      {
+        vol: 4,
+        titleCn: "魁地奇风暴与战术板",
+        titleEn: "Quidditch Gale & The Strategy Board",
+        badge: "战术分析师",
+        mission: "在狂风中调整团队策略并精准指挥队友",
+        vocab: [
+          { word: "strategy", phonetic: "/ˈstrætədʒi/", pos: "n.", meaning: "策略、战术", basic: "We have a smart game plan.", pro: "We designed a smart strategy for the gale.", example: "A clear strategy helps the whole team win." },
+          { word: "opponent", phonetic: "/əˈpəʊnənt/", pos: "n.", meaning: "对手、对方", basic: "The other player is fast.", pro: "Our opponent is fast, so we pass early.", example: "Watch your opponent and guard the center lane." },
+          { word: "flexible", phonetic: "/ˈfleksəbl/", pos: "adj.", meaning: "灵活的、可调整的", basic: "Our plan can change easily.", pro: "We need a flexible formation in strong wind.", example: "Flexible thinking solves unexpected problems." },
+          { word: "concentrate", phonetic: "/ˈkɒnsntreɪt/", pos: "v.", meaning: "集中注意力、专心", basic: "Focus your eyes on the ball.", pro: "Concentrate on the pass and stay balanced.", example: "It is important to concentrate during practice." },
+          { word: "defeat", phonetic: "/dɪˈfiːt/", pos: "v./n.", meaning: "击败、战胜", basic: "We beat the rival squad.", pro: "We defeated the rival squad with teamwork.", example: "Smart teamwork can defeat a stronger opponent." }
+        ],
+        coreStory: [
+          { en: "Strong crosswinds forced the captain to draw a new <mark>strategy</mark>.", cn: "强劲横风迫使队长画出了一套新战术。" },
+          { en: "Each <mark>opponent</mark> flew fast, so a <mark>flexible</mark> formation was needed.", cn: "每位对手都飞得很快，因此需要灵活的阵型。" },
+          { en: 'The coach yelled, "<mark>Concentrate</mark> on your lane and pass early!"', cn: "教练喊道：“集中注意力守好防区，尽早传球！”" },
+          { en: "With sharp coordination, they could <mark>defeat</mark> the wind and win.", cn: "依靠敏锐配合，他们得以战胜狂风赢得胜利。" }
+        ],
+        builder: {
+          prompt: "拼出队长喊话：“集中注意力盯紧你的对手！”",
+          tokens: ["Concentrate", "on", "the", "game", "and", "watch", "your", "opponent!"],
+          answer: "Concentrate on the game and watch your opponent!"
+        },
+        qa: [
+          { prompt: "快问 1：用 strategy 造一句“我们需要一个灵活的策略”。", tip: "We need a flexible...", model: "We need a flexible strategy for the match." },
+          { prompt: "快问 2：用 defeat 造一句“团队合作能击败任何困难”。", tip: "Teamwork can defeat...", model: "Good teamwork can defeat any difficult challenge." }
+        ]
+      },
+      {
+        vol: 5,
+        titleCn: "钟楼密室的终极谜题",
+        titleEn: "The Final Riddle of the Clocktower",
+        badge: "密室结案官",
+        mission: "整合全案证据完成逻辑推理与结案报告",
+        vocab: [
+          { word: "reveal", phonetic: "/rɪˈviːl/", pos: "v.", meaning: "揭示、揭露、显露", basic: "The last clue shows the truth.", pro: "The final clue reveals the hidden truth.", example: "The secret map reveals a hidden staircase." },
+          { word: "evidence", phonetic: "/ˈevɪdəns/", pos: "n. [U]", meaning: "证据、依据（不可数）", basic: "We have proof for our idea.", pro: "We collected clear evidence for our report.", example: "Strong evidence leads to the right answer." },
+          { word: "essential", phonetic: "/ɪˈsenʃl/", pos: "adj.", meaning: "必不可少的、极其重要的", basic: "Patience is very important.", pro: "Patience is essential for solving riddles.", example: "Daily reading is essential for mastering English." },
+          { word: "conclusion", phonetic: "/kənˈkluːʒn/", pos: "n.", meaning: "结论、推论", basic: "At the end, we decided...", pro: "All facts point to the same conclusion.", example: "Check every clue before making a conclusion." },
+          { word: "achieve", phonetic: "/əˈtʃiːv/", pos: "v.", meaning: "达成、实现、完成", basic: "They finished their big goal.", pro: "They achieved their secret mission together.", example: "Steady effort helps you achieve great results." }
+        ],
+        coreStory: [
+          { en: "Inside the clocktower, all clues joined together to <mark>reveal</mark> the truth.", cn: "在钟楼密室里，所有线索汇聚在一起揭示了真相。" },
+          { en: "Every piece of <mark>evidence</mark> showed why the owl had arrived at midnight.", cn: "每一份证据都说明了猫头鹰为何在午夜抵达。" },
+          { en: "Careful observation was <mark>essential</mark> to reach the right <mark>conclusion</mark>.", cn: "细致的观察对于得出正确结论至关重要。" },
+          { en: "Step by step, the young agents <mark>achieve</mark>d their toughest mission.", cn: "一步一个脚印地推进后，小特工们完成了最艰巨的任务。" }
+        ],
+        builder: {
+          prompt: "拼出结案陈述：“所有证据都指向同一个结论。”",
+          tokens: ["All", "the", "evidence", "leads", "to", "the", "same", "conclusion."],
+          answer: "All the evidence leads to the same conclusion."
+        },
+        qa: [
+          { prompt: "快问 1：用 essential 造一句“练习对学好英语至关重要”。", tip: "Practice is essential...", model: "Practice is essential for learning English well." },
+          { prompt: "快问 2：用 achieve 造一句“你可以通过努力实现目标”。", tip: "You can achieve...", model: "You can achieve your goal through steady practice." }
+        ]
+      }
+    ];
+
+    const SCENE_VARIATIONS = [
+      { place: "Astronomy Tower", placeCn: "天文塔观星台", time: "under a silver crescent moon", timeCn: "在银色新月下" },
+      { place: "Library Archive", placeCn: "图书馆密档室", time: "before the morning bell", timeCn: "在晨钟敲响前" },
+      { place: "Greenhouse Three", placeCn: "第三温室玻璃房", time: "during a misty drizzle", timeCn: "在薄雾细雨中" },
+      { place: "Clockwork Corridor", placeCn: "齿轮钟表长廊", time: "at precisely dusk", timeCn: "恰好在黄昏时分" },
+      { place: "Owlery Loft", placeCn: "猫头鹰棚屋阁楼", time: "after a sudden gust of wind", timeCn: "在一阵突如其来的大风后" },
+      { place: "Stone Courtyard", placeCn: "石砌中庭广场", time: "while lanterns glowed softly", timeCn: "当灯笼柔和地亮起时" },
+      { place: "Alchemy Cellar", placeCn: "炼金地下室", time: "with a brass compass in hand", timeCn: "手里握着黄铜罗盘时" },
+      { place: "Great Staircase", placeCn: "旋转大理石楼梯", time: "on a quiet Sunday morning", timeCn: "在一个安静的周日清晨" }
+    ];
+
+    const STORAGE_KEY = "hogwarts_book3_5000_state_v1";
+    const defaultState = {
+      currentPage: 1,
+      mode: "story",
+      xp: 0,
+      hideCn: false,
+      slowSpeech: false,
+      completedPages: {},
+      answeredQuizzes: {}
+    };
+
+    function loadState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        return raw ? { ...defaultState, ...JSON.parse(raw) } : { ...defaultState };
+      } catch (e) {
+        return { ...defaultState };
+      }
+    }
+
+    let state = loadState();
+    let builderSelected = [];
+
+    function saveState() {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(state)); } catch (e) {}
+    }
+
+    // 根据页码 (1~5000) 动态生成专属内容，前5页为精编主线，6~5000页结合场景矩阵与跨卷词汇轮换
+    function getPageContent(pageNum) {
+      const p = Math.max(1, Math.min(TOTAL_PAGES, Number(pageNum) || 1));
+      const volIdx = Math.floor((p - 1) / 1000); // 0..4
+      const theme = CHAPTER_THEMES[volIdx];
+      const pageInVol = ((p - 1) % 1000) + 1;
+
+      if (p <= 5) {
+        const directTheme = CHAPTER_THEMES[p - 1];
+        return {
+          page: p,
+          vol: directTheme.vol,
+          titleCn: directTheme.titleCn,
+          titleEn: directTheme.titleEn,
+          badge: directTheme.badge,
+          mission: directTheme.mission,
+          story: directTheme.coreStory,
+          vocab: directTheme.vocab,
+          quizzes: buildQuizzesForTheme(directTheme, p),
+          builder: directTheme.builder,
+          qa: directTheme.qa
+        };
+      }
+
+      const scene = SCENE_VARIATIONS[(p * 7 + volIdx) % SCENE_VARIATIONS.length];
+      const v0 = theme.vocab[p % theme.vocab.length];
+      const v1 = theme.vocab[(p + 1) % theme.vocab.length];
+      const v2 = theme.vocab[(p + 2) % theme.vocab.length];
+      const crossTheme = CHAPTER_THEMES[(volIdx + (p % 4) + 1) % 5];
+      const v3 = crossTheme.vocab[p % crossTheme.vocab.length];
+
+      const dynamicStory = [
+        {
+          en: `Mission Log #${p}: In the ${scene.place}, ${scene.time}, the junior agents opened their field notebook.`,
+          cn: `任务日志 #${p}：${scene.timeCn}，在${scene.placeCn}，小特工们翻开了外勤笔记本。`
+        },
+        {
+          en: `Using "${v0.word}" (${v0.meaning}), Leo upgraded "${v0.basic}" into "${v0.pro}"`,
+          cn: `运用进阶词“${v0.word}”（${v0.meaning}），里奥把普通表达升级成了地道句型。`
+        },
+        {
+          en: `Next, they practiced "${v1.word}": ${v1.example}`,
+          cn: `接着，他们练习了“${v1.word}”（${v1.meaning}）的实际情景用法。`
+        },
+        {
+          en: `Finally, combining "${v2.word}" and "${v3.word}" helped them solve Case #${pageInVol} in Volume ${theme.vol}.`,
+          cn: `最后，结合“${v2.word}”与“${v3.word}”，他们顺利破解了第 ${theme.vol} 卷的第 ${pageInVol} 号档案。`
+        }
+      ];
+
+      const builderPool = [
+        {
+          prompt: `第 ${p} 页拼句挑战：把词块排成标准进阶句型`,
+          tokens: v0.pro.split(" "),
+          answer: v0.pro
+        },
+        {
+          prompt: `第 ${p} 页拼句挑战：还原情景例句`,
+          tokens: v1.example.split(" "),
+          answer: v1.example
+        }
+      ];
+
+      return {
+        page: p,
+        vol: theme.vol,
+        titleCn: `${theme.titleCn} · 档案 #${pageInVol}`,
+        titleEn: `${theme.titleEn} · File #${pageInVol}`,
+        badge: `${theme.badge} Lv.${Math.ceil(pageInVol / 100)}`,
+        mission: `${scene.placeCn}外勤训练：掌握 ${v0.word}、${v1.word}、${v2.word} 与跨卷词 ${v3.word}`,
+        story: dynamicStory,
+        vocab: [v0, v1, v2, v3],
+        quizzes: buildQuizzesForTheme(theme, p, [v0, v1, v3]),
+        builder: builderPool[p % builderPool.length],
+        qa: [
+          {
+            prompt: `第 ${p} 页特工提问 1：请用本页核心词 "${v0.word}"（${v0.meaning}）口头或书面造一个句子。`,
+            tip: `参考升级思路：${v0.basic} → ${v0.pro}`,
+            model: v0.pro
+          },
+          {
+            prompt: `第 ${p} 页特工提问 2：如何把跨卷词 "${v3.word}"（${v3.meaning}）放进一个完整英语句子里？`,
+            tip: `提示词义：${v3.meaning}（${v3.pos}）`,
+            model: v3.example
+          }
+        ]
+      };
+    }
+
+    function buildQuizzesForTheme(theme, seed, customList) {
+      const list = customList || theme.vocab.slice(0, 3);
+      return list.map((item, idx) => {
+        const distractors = theme.vocab.filter(x => x.word !== item.word);
+        const d1 = distractors[(seed + idx) % distractors.length];
+        const d2 = distractors[(seed + idx + 1) % distractors.length];
+        const blankSentence = item.example.replace(new RegExp(item.word, "i"), "______");
+        const rawOpts = [
+          { word: item.word, ok: true, msg: `回答正确！"${item.word}" 意为“${item.meaning}”，放进句中非常地道！` },
+          { word: d1.word, ok: false, msg: `再想想哦！"${d1.word}" 是“${d1.meaning}”，不符合这里的语境。` },
+          { word: d2.word, ok: false, msg: `差点就对了！"${d2.word}" 意为“${d2.meaning}”，换一个试试。` }
+        ];
+        // 根据页码轮换选项顺序
+        const shift = (seed + idx) % 3;
+        const rotated = [rawOpts[shift], rawOpts[(shift + 1) % 3], rawOpts[(shift + 2) % 3]];
+        const letters = ["A", "B", "C"];
+        return {
+          tag: `第 ${seed} 页 · 情景词汇第 ${idx + 1} 题`,
+          q: `Choose the best word to complete the sentence: "${blankSentence}" (提示：${item.meaning})`,
+          options: rotated.map((o, i) => ({
+            label: `${letters[i]}. ${o.word}`,
+            ok: o.ok,
+            msg: o.msg
+          }))
+        };
+      });
+    }
+
+    function speak(text) {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = "en-US";
+      utter.rate = state.slowSpeech ? 0.78 : 1.0;
+      window.speechSynthesis.speak(utter);
+    }
+
+    function markPageCompleted(p) {
+      if (!state.completedPages[p]) {
+        state.completedPages[p] = true;
+        state.xp += 20;
+      }
+      saveState();
+      renderHeaderStats();
+    }
+
+    function renderHeaderStats() {
+      const doneCount = Object.keys(state.completedPages).length;
+      document.getElementById("pageIndicator").textContent = `📄 第 ${state.currentPage} / ${TOTAL_PAGES} 页`;
+      document.getElementById("xpBadge").textContent = `⚡ ${state.xp} XP`;
+      document.getElementById("doneCountBadge").textContent = `✅ 已完成 ${doneCount} 页`;
+      document.getElementById("toggleCnBtn").textContent = state.hideCn ? "👁️ 显示中文释义" : "🙈 隐藏中文释义";
+      document.getElementById("rateBtn").textContent = state.slowSpeech ? "🐢 语速：慢速 (0.78x)" : "⚡ 语速：正常 (1.0x)";
+      document.getElementById("pageJumpInput").value = state.currentPage;
+      const volStart = Math.floor((state.currentPage - 1) / 1000) * 1000 + 1;
+      document.getElementById("volumeSelect").value = String(volStart);
+    }
+
+    function renderModeTabs() {
+      document.querySelectorAll(".mode-tab").forEach(tab => {
+        tab.classList.toggle("active", tab.dataset.mode === state.mode);
+        tab.onclick = () => {
+          state.mode = tab.dataset.mode;
+          saveState();
+          renderModeTabs();
+          renderPanel();
+        };
+      });
+    }
+
+    function renderPanel() {
+      const data = getPageContent(state.currentPage);
+      const panel = document.getElementById("learningPanel");
+      let bodyHtml = "";
+
+      if (state.mode === "story") {
+        bodyHtml = data.story.map((line, idx) => {
+          const plainEn = line.en.replace(/<\/?mark>/g, "");
+          return `
+            <div class="story-line">
+              <div class="story-en">${idx + 1}. ${line.en}</div>
+              <div class="story-cn ${state.hideCn ? "hidden" : ""}">${line.cn}</div>
+              <button class="btn btn-sm" data-speak="${encodeURIComponent(plainEn)}">🔊 朗读本句</button>
+            </div>
+          `;
+        }).join("");
+      } else if (state.mode === "vocab") {
+        bodyHtml = `<div class="vocab-grid">` + data.vocab.map(v => `
+          <div class="vocab-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;">
+              <div>
+                <span class="vocab-word">${v.word}</span>
+                <span class="vocab-phonetic">${v.phonetic} · ${v.pos}</span>
+              </div>
+              <button class="btn btn-sm" data-speak="${encodeURIComponent(v.word + ". " + v.example)}">🔊 听发音</button>
+            </div>
+            <div style="font-weight:600;">${v.meaning}</div>
+            <div class="pro-upgrade-box">
+              <span class="basic-txt">普通说法：${v.basic}</span>
+              <span class="pro-txt">进阶地道：${v.pro}</span>
+            </div>
+            <div style="font-size:13.5px;color:#e2e8f0;background:rgba(255,255,255,0.04);padding:9px;border-radius:8px;">
+              例句：${v.example}
+            </div>
+          </div>
+        `).join("") + `</div>`;
+      } else if (state.mode === "quiz") {
+        bodyHtml = data.quizzes.map((qItem, qIdx) => {
+          const qKey = `p${data.page}_q${qIdx}`;
+          const savedChoice = state.answeredQuizzes[qKey];
+          return `
+            <div class="quiz-card">
+              <div class="quiz-tag">${qItem.tag}</div>
+              <div class="quiz-q">${qIdx + 1}. ${qItem.q}</div>
+              <div class="quiz-options">
+                ${qItem.options.map((opt, oIdx) => {
+                  let cls = "opt-btn";
+                  let disabled = "";
+                  if (savedChoice !== undefined) {
+                    disabled = "disabled";
+                    if (oIdx === savedChoice) cls += opt.ok ? " correct" : " wrong";
+                    else if (opt.ok) cls += " correct";
+                  }
+                  return `<button class="${cls}" ${disabled} data-qidx="${qIdx}" data-oidx="${oIdx}">${opt.label}</button>`;
+                }).join("")}
+              </div>
+              <div class="feedback-box ${savedChoice !== undefined ? "show " + (qItem.options[savedChoice].ok ? "ok" : "err") : ""}">
+                ${savedChoice !== undefined ? qItem.options[savedChoice].msg : ""}
+              </div>
+            </div>
+          `;
+        }).join("");
+      } else if (state.mode === "builder") {
+        const isDone = !!state.completedPages[data.page];
+        const currentTokens = isDone ? data.builder.answer.split(" ") : builderSelected;
+        bodyHtml = `
+          <div class="quiz-card">
+            <div class="quiz-q">${data.builder.prompt}</div>
+            <div class="sentence-slot" id="sentenceSlot">
+              ${currentTokens.length ? currentTokens.map((t, idx) => `<button class="token-btn" data-remove="${idx}">${t}</button>`).join("") : '<span style="color:var(--text-muted);font-size:13px;">点击下方词块拼出完整句子...</span>'}
+            </div>
+            <div class="token-pool" id="tokenPool">
+              ${data.builder.tokens.map(t => {
+                const usedCount = currentTokens.filter(x => x === t).length;
+                const totalCount = data.builder.tokens.filter(x => x === t).length;
+                const disabled = isDone || usedCount >= totalCount ? "disabled" : "";
+                return `<button class="token-btn" ${disabled} data-token="${encodeURIComponent(t)}">${t}</button>`;
+              }).join("")}
+            </div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-gold" id="checkBuilderBtn">✓ 校验咒语拼句</button>
+              <button class="btn" id="clearBuilderBtn">清空重拼</button>
+              <button class="btn" data-speak="${encodeURIComponent(data.builder.answer)}">🔊 朗读正确句子</button>
+            </div>
+            <div class="feedback-box ${isDone ? "show ok" : ""}" id="builderFeedback">
+              ${isDone ? "本页拼句已完成！标准句型：" + data.builder.answer : ""}
+            </div>
+          </div>
+        `;
+      } else if (state.mode === "qa") {
+        bodyHtml = data.qa.map((item, idx) => `
+          <div class="qa-card">
+            <div style="font-weight:700;color:var(--accent-gold);margin-bottom:6px;">${item.prompt}</div>
+            <div style="font-size:13px;color:var(--text-muted);">${item.tip}</div>
+            <input class="qa-input" type="text" placeholder="试着输入你的英文句子，或点击下方按钮查看参考与跟读..." />
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <button class="btn btn-sm btn-gold" data-toggle-model="model_${idx}">💡 查看参考表达</button>
+              <button class="btn btn-sm" data-speak="${encodeURIComponent(item.model)}">🔊 朗读参考句</button>
+            </div>
+            <div class="qa-model" id="model_${idx}"><strong>参考表达：</strong>${item.model}</div>
+          </div>
+        `).join("");
+      }
+
+      panel.innerHTML = `
+        <div class="panel-header">
+          <div>
+            <h2>第 ${data.page} 页 · ${data.titleCn}（${data.titleEn}）</h2>
+            <div style="color:var(--text-muted);font-size:13.5px;">所属分卷：第 ${data.vol} 卷 · 本页勋章：🏅 ${data.badge}</div>
+          </div>
+          <div class="mission-badge">${data.mission}</div>
+        </div>
+        ${bodyHtml}
+      `;
+
+      panel.querySelectorAll("[data-speak]").forEach(btn => {
+        btn.addEventListener("click", () => speak(decodeURIComponent(btn.dataset.speak)));
+      });
+
+      panel.querySelectorAll(".opt-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const qIdx = Number(btn.dataset.qidx);
+          const oIdx = Number(btn.dataset.oidx);
+          const qKey = `p${data.page}_q${qIdx}`;
+          const first = state.answeredQuizzes[qKey] === undefined;
+          state.answeredQuizzes[qKey] = oIdx;
+          if (first && data.quizzes[qIdx].options[oIdx].ok) {
+            state.xp += 10;
+          }
+          saveState();
+          renderHeaderStats();
+          renderPanel();
+        });
+      });
+
+      const poolEl = document.getElementById("tokenPool");
+      if (poolEl) {
+        poolEl.querySelectorAll("[data-token]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            builderSelected.push(decodeURIComponent(btn.dataset.token));
+            renderPanel();
+          });
+        });
+      }
+
+      const slotEl = document.getElementById("sentenceSlot");
+      if (slotEl) {
+        slotEl.querySelectorAll("[data-remove]").forEach(btn => {
+          btn.addEventListener("click", () => {
+            builderSelected.splice(Number(btn.dataset.remove), 1);
+            renderPanel();
+          });
+        });
+      }
+
+      const checkBtn = document.getElementById("checkBuilderBtn");
+      if (checkBtn) {
+        checkBtn.addEventListener("click", () => {
+          const attempt = builderSelected.join(" ").trim();
+          const fb = document.getElementById("builderFeedback");
+          fb.classList.add("show");
+          if (attempt === data.builder.answer) {
+            fb.classList.remove("err");
+            fb.classList.add("ok");
+            fb.textContent = `拼句成功！本页通关 +20 XP！标准句型：${data.builder.answer}`;
+            markPageCompleted(data.page);
+          } else {
+            fb.classList.remove("ok");
+            fb.classList.add("err");
+            fb.textContent = "词序还有一点小偏差，点“清空重拼”再试一次吧！";
+          }
+        });
+      }
+
+      const clearBtn = document.getElementById("clearBuilderBtn");
+      if (clearBtn) {
+        clearBtn.addEventListener("click", () => {
+          delete state.completedPages[data.page];
+          builderSelected = [];
+          saveState();
+          renderHeaderStats();
+          renderPanel();
+        });
+      }
+
+      panel.querySelectorAll("[data-toggle-model]").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const el = document.getElementById(btn.dataset.toggleModel);
+          if (el) el.classList.toggle("show");
+        });
+      });
+    }
+
+    function goToPage(targetPage) {
+      const p = Math.max(1, Math.min(TOTAL_PAGES, Number(targetPage) || 1));
+      state.currentPage = p;
+      builderSelected = [];
+      saveState();
+      renderHeaderStats();
+      renderPanel();
+    }
+
+    document.getElementById("prevPageBtn").addEventListener("click", () => goToPage(state.currentPage - 1));
+    document.getElementById("nextPageBtn").addEventListener("click", () => goToPage(state.currentPage + 1));
+    document.getElementById("goPageBtn").addEventListener("click", () => {
+      goToPage(document.getElementById("pageJumpInput").value);
+    });
+    document.getElementById("pageJumpInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") goToPage(e.target.value);
+    });
+    document.getElementById("volumeSelect").addEventListener("change", (e) => {
+      goToPage(Number(e.target.value));
+    });
+    document.getElementById("randomPageBtn").addEventListener("click", () => {
+      goToPage(Math.floor(Math.random() * TOTAL_PAGES) + 1);
+    });
+    document.getElementById("toggleCnBtn").addEventListener("click", () => {
+      state.hideCn = !state.hideCn;
+      saveState();
+      renderHeaderStats();
+      renderPanel();
+    });
+    document.getElementById("rateBtn").addEventListener("click", () => {
+      state.slowSpeech = !state.slowSpeech;
+      saveState();
+      renderHeaderStats();
+    });
+    document.getElementById("stopSpeechBtn").addEventListener("click", () => {
+      if ("speechSynthesis" in window) window.speechSynthesis.cancel();
+    });
+    document.getElementById("resetProgressBtn").addEventListener("click", () => {
+      state = { ...defaultState };
+      builderSelected = [];
+      saveState();
+      renderHeaderStats();
+      renderModeTabs();
+      renderPanel();
+    });
+
+    renderHeaderStats();
+    renderModeTabs();
+    renderPanel();
+  </script>
+</body>
+</html>
